@@ -1,0 +1,23 @@
+﻿{
+    "Address": "",
+    "Author": "后台管理工具",
+    "BuilderVersion": {
+        "Major": 1,
+        "Minor": 0
+    },
+    "CompilePlugins": "",
+    "Copyright": "Copyright(C)2020-2024 Inc.AllRights Reserved",
+    "Description": "后台管理工具\r\n@备注:\r\n后台管理工具",
+    "Email": "",
+    "ExportPublicClassMethod": false,
+    "FaxNumber": "",
+    "Homepage": "",
+    "Name": "后台管理工具",
+    "ReleaseVersion": {
+        "Major": 1,
+        "Minor": 2
+    },
+    "TelephoneNumber": "",
+    "WriteVersion": true,
+    "ZipCode": ""
+}

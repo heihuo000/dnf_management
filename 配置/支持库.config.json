@@ -1,0 +1,158 @@
+﻿[
+    {
+        "CmdCount": 657,
+        "Guid": "d09f2340818511d396f6aaf844c7e325",
+        "Key": "krnln",
+        "MaxRefConstPos": 210,
+        "MaxRefObjectPos": 49,
+        "Name": "系统核心支持库",
+        "Version": {
+            "Major": 5,
+            "Minor": 7
+        }
+    },
+    {
+        "CmdCount": 7,
+        "Guid": "A512548E76954B6E92C21055517615B0",
+        "Key": "spec",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "特殊功能支持库Ex",
+        "Version": {
+            "Major": 4,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 5,
+        "Guid": "4BB4003860154917BC7D8230BF4FA58A",
+        "Key": "dp1",
+        "MaxRefConstPos": 2,
+        "MaxRefObjectPos": 0,
+        "Name": "数据操作支持库一",
+        "Version": {
+            "Major": 2,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 49,
+        "Guid": "7F54B9CE8887428dBA9CEEB94CEF4C72",
+        "Key": "mysql",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "MySQL支持库",
+        "Version": {
+            "Major": 3,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 5,
+        "Guid": "5F99C1642A2F4e03850721B4F5D7C3F8",
+        "Key": "EThread",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "多线程支持库Ex",
+        "Version": {
+            "Major": 3,
+            "Minor": 2
+        }
+    },
+    {
+        "CmdCount": 7,
+        "Guid": "52F260023059454187AF826A3C07AF2A",
+        "Key": "shell",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "操作系统界面功能支持库Ex",
+        "Version": {
+            "Major": 4,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 2,
+        "Guid": "{A6245EAB-27CC-44dc-88F4-6EA70F486AF7}",
+        "Key": "627edof",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "E2017支持库-0627",
+        "Version": {
+            "Major": 1,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 1,
+        "Guid": "{A0005538-9391-4dd9-B4D6-8EB7B9360F08}",
+        "Key": "iconv",
+        "MaxRefConstPos": 25,
+        "MaxRefObjectPos": 0,
+        "Name": "编码转换支持库Ex",
+        "Version": {
+            "Major": 3,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 28,
+        "Guid": "{A068799B-7551-46b9-8CA8-EEF8357AFEA4}",
+        "Key": "commobj",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 1,
+        "Name": "通用对象支持库Ex",
+        "Version": {
+            "Major": 3,
+            "Minor": 1
+        }
+    },
+    {
+        "CmdCount": 3,
+        "Guid": "F7FC1AE45C5C4758AF03EF19F18A395D",
+        "Key": "eAPI",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "应用接口支持库Ex",
+        "Version": {
+            "Major": 4,
+            "Minor": 2
+        }
+    },
+    {
+        "CmdCount": 1,
+        "Guid": "63AA4BEA120C4DABAD567115556DE054",
+        "Key": "cncnv",
+        "MaxRefConstPos": 4,
+        "MaxRefObjectPos": 0,
+        "Name": "文字编码转换支持库",
+        "Version": {
+            "Major": 2,
+            "Minor": 0
+        }
+    },
+    {
+        "CmdCount": 80,
+        "Guid": "27bb20fdd3e145e4bee3db39ddd6e64c",
+        "Key": "iext",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 5,
+        "Name": "扩展界面支持库一Ex",
+        "Version": {
+            "Major": 3,
+            "Minor": 4
+        }
+    },
+    {
+        "CmdCount": 0,
+        "Guid": "AF6AD80AA4244A59AFB3D83ECF5173CC",
+        "Key": "iext2",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 7,
+        "Name": "扩展界面支持库二",
+        "Version": {
+            "Major": 2,
+            "Minor": 0
+        }
+    }
+]

@@ -1,0 +1,174 @@
+﻿.版本 2
+
+.程序集 __HIDDEN_TEMP_MOD__, , 公开
+.子程序 _HP_BytesLen, 整数型, 公开, 取字节集长度
+    .参数 bytes, 字节集
+
+    
+
+.子程序 _HP_Bytes, 整数型, 公开, 取字节集指针
+    .参数 bytes, 字节集, 参考
+
+    
+
+.子程序 _HP_GetDword, 整数型, 公开, 获取指针下整数型值
+    .参数 Ptr, 整数型
+    .参数 dev, 整数型
+
+    
+
+.子程序 _HP_Compress, 字节集, 公开, 普通压缩
+    .参数 szSrc, 字节集
+
+    
+
+.子程序 _HP_Uncompress, 字节集, 公开, 普通解压
+    .参数 szSrc, 字节集
+
+    
+
+.子程序 _HP_CompressEx, 字节集, 公开, 高级压缩
+    .参数 szSrc, 字节集
+    .参数 iLevel, 整数型, 可空, 默认:-1
+    .参数 iMethod, 整数型, 可空, 默认:8
+    .参数 iWindowBits, 整数型, 可空, 默认:15
+    .参数 iMemLevel, 整数型, 可空, 默认:8
+    .参数 iStrategy, 整数型, 可空, 默认:0
+
+    
+
+.子程序 _HP_UncompressEx, 字节集, 公开, 高级解压
+    .参数 szSrc, 字节集
+    .参数 iWindowBits, 整数型, 可空, 默认:15
+
+    
+
+.子程序 SysGetNumberOfProcessors, 整数型, 公开, 获取CPU核心数
+    
+
+.子程序 GetHttpDefaultStatusCodeDesc, 文本型, 公开, 获取HTTP状态码文本描述
+    .参数 enCode, 整数型
+
+    
+
+.子程序 _HP_UrlEncode, 文本型, 公开
+    .参数 szSrc, 文本型
+    .参数 utf8, 逻辑型, 可空
+
+    
+
+.子程序 _HP_UrlDecode, 文本型, 公开
+    .参数 lpszSrc, 文本型
+    .参数 utf8, 逻辑型, 可空
+
+    
+
+.子程序 _HP_GZipCompress, 字节集, 公开, Gzip 压缩
+    .参数 szSrc, 字节集
+
+    
+
+.子程序 _HP_GZipUncompress, 字节集, 公开, GZip 解压
+    .参数 szSrc, 字节集
+
+    
+
+.子程序 _HP_Base64Encode, 字节集, 公开
+    .参数 byte, 字节集
+
+    
+
+.子程序 _HP_Base64Decode, 字节集, 公开
+    .参数 bytes, 字节集
+
+    
+
+.子程序 _HP_EnumHostIPAddresse, 整数型, 公开, /* 枚举主机 IP 地址 */
+    .参数 lpszHost, 文本型
+    .参数 TipArray, TIPAddr, 参考 数组
+
+    
+
+.子程序 _HP_IsIPAddress, 逻辑型, 公开, /* 检查字符串是否符合 IP 地址格式 */
+    .参数 lpszAddress, 文本型
+
+    
+
+.子程序 _HP_GetIPAddress, 文本型, 公开
+    .参数 lpHost, 文本型
+
+    
+
+.子程序 _HP_GbkToUtf8, 文本型, 公开
+    .参数 gbk, 文本型
+
+    
+
+.子程序 _HP_Utf8ToGbk, 文本型, 公开
+    .参数 utf8, 文本型
+
+    
+
+.子程序 _HP_A2W, 字节集, 公开
+    .参数 Ansi, 文本型
+
+    
+
+.子程序 _HP_W2A, 文本型, 公开
+    .参数 Unicode, 字节集
+
+    
+
+.子程序 _HP_SetDword, , 公开, 设置指针下整数型值
+    .参数 Ptr, 整数型
+    .参数 dev, 整数型
+    .参数 val, 整数型
+
+    
+
+.子程序 _HP_GetByte, 字节型, 公开, 获取指针下字节型值
+    .参数 Ptr, 整数型
+    .参数 dev, 整数型
+
+    
+
+.子程序 _HP_SetByte, , 公开, 设置指针下字节型值
+    .参数 Ptr, 整数型
+    .参数 dev, 整数型
+    .参数 byte, 字节型
+
+    
+
+.子程序 _HP_Min, 整数型, 公开, 两数取最小
+    .参数 a, 整数型
+    .参数 b, 整数型
+
+    
+
+.子程序 _HP_Max, 整数型, 公开, 两数取最大
+    .参数 a, 整数型
+    .参数 b, 整数型
+
+    
+
+.子程序 _HP_Strlen, 整数型, 公开, 取文本长度
+    .参数 str, 文本型
+
+    
+
+.子程序 _HP_Str, 整数型, 公开, 取文本地址
+    .参数 str, 文本型
+
+    
+
+.子程序 HPWinHttp_Init, 逻辑型, 公开, 初始化
+    
+
+.子程序 HPWinHttp_Destroy, , 公开, 销毁WinHttp扩展
+    
+
+.子程序 目录_是否存在, 逻辑型, 公开, 输入一个目录名,判断此目录是否存在
+    .参数 欲判断的目录名, 文本型, , 传入的目录名不会被改变
+
+    
+

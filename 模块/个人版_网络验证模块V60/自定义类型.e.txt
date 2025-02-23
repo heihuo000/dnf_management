@@ -1,0 +1,22 @@
+﻿.版本 2
+
+.数据类型 STARTUPINFO, 公开
+    .成员 cb, 整数型
+    .成员 lpReserved, 整数型
+    .成员 lpDesktop, 整数型
+    .成员 lpTitle, 整数型
+    .成员 dwX, 整数型
+    .成员 dwY, 整数型
+    .成员 dwXSize, 整数型
+    .成员 dwYSize, 整数型
+    .成员 dwXCountChars, 整数型
+    .成员 dwYCountChars, 整数型
+    .成员 dwFillAttribute, 整数型
+    .成员 dwFlags, 整数型
+    .成员 wShowWindow, 短整数型
+    .成员 cbReserved2, 短整数型
+    .成员 lpReserved2, 字节型
+    .成员 hStdInput, 整数型
+    .成员 hStdOutput, 整数型
+    .成员 hStdError, 整数型
+

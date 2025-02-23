@@ -1,0 +1,139 @@
+﻿.版本 2
+
+.程序集 HPSocket
+.程序集变量 m_Client, ITcpClient
+.程序集变量 m_bSSL, 逻辑型
+.程序集变量 m_hClient, 整数型
+
+.子程序 ITcpClient_Start, 逻辑型, , www.eyuyan.la
+    .参数 ip, 文本型
+    .参数 port, 整数型
+    .参数 bSSL, 逻辑型
+
+    m_bSSL ＝ bSSL
+    m_hClient ＝ m_Client.Create (m_bSSL)
+    .如果真 (m_hClient ＝ 0)
+        信息框 (“创建CLIENT组件失败”, #警告图标, , )
+        返回 (假)
+    .如果真结束
+    m_Client.SetSocketBufferSize (m_hClient, 4 × 1024 × 1024) ' 设置缓冲区大小为4Mb
+    .如果真 (m_bSSL)
+        m_Client.SetupSSLContext (m_hClient, #SSL_VM_NONE, )
+    .如果真结束
+    m_Client.OnPrepareConnect (&ITcpClient_OnPrepareConnect)
+    m_Client.OnConnect (&ITcpClient_OnConnect)
+    m_Client.OnHandShake (&ITcpClient_OnHandShake)
+    m_Client.OnSend (&ITcpClient_OnSend)
+    m_Client.OnReceive (&ITcpClient_OnReceive)
+    m_Client.OnClose (&ITcpClient_OnClose)
+    .如果真 (m_Client.Start (m_hClient, ip, port) ＝ 假)
+        ' _Log (“启动服务”, m_Client.GetLastErrorDesc (m_hClient) ＋ “ (” ＋ 到文本 (m_Client.GetLastError (m_hClient)) ＋ “)”)
+        m_Client.Destroy (m_hClient, m_bSSL)
+        m_Client.DestroyListener ()
+        m_hClient ＝ 0
+        返回 (假)
+    .如果真结束
+    返回 (真)
+
+.子程序 ITcpClient_Destroy
+    .如果真 (m_hClient ＝ 0)
+        返回 ()
+    .如果真结束
+    m_Client.Stop (m_hClient)
+    m_Client.Destroy (m_hClient, m_bSSL)
+    m_hClient ＝ 0
+
+.子程序 ITcpClient_OnPrepareConnect, 整数型, , 绑定准备连接事件
+    .参数 pSender, 整数型
+    .参数 dwConnID, 整数型
+    .参数 socket, 整数型
+    .局部变量 szAddress, 文本型
+    .局部变量 iAddressLen, 整数型
+    .局部变量 usPort, 短整数型
+
+    返回 (#HR_OK)
+
+.子程序 ITcpClient_OnConnect, 整数型, , 客户进入
+    .参数 pSender, 整数型
+    .参数 dwConnID, 整数型
+    .局部变量 szAddress, 文本型
+    .局部变量 usPort, 整数型
+
+    m_Client.GetLocalAddress (pSender, szAddress, usPort)
+    返回 (#HR_OK)
+
+.子程序 ITcpClient_OnHandShake, 整数型, , 握手
+    .参数 pSender, 整数型
+    .参数 dwConnID, 整数型
+    .局部变量 szAddress, 文本型
+    .局部变量 usPort, 整数型
+
+    m_Client.GetRemoteHost (pSender, szAddress, usPort)
+    返回 (#HR_OK)
+
+.子程序 ITcpClient_OnSend, 整数型, , 发送
+    .参数 pSender, 整数型
+    .参数 dwConnID, 整数型
+    .参数 pData, 整数型, , 数据指针 需通过指针到字节集获取数据
+    .参数 iLength, 整数型
+
+    返回 (#HR_OK)
+
+.子程序 ITcpClient_OnReceive, 整数型, , 数据到达
+    .参数 pSender, 整数型
+    .参数 dwConnID, 整数型
+    .参数 pData, 整数型, , 数据指针 需通过指针到字节集获取数据
+    .参数 iLength, 整数型
+
+    返回 (_Receive (pData, iLength))
+
+.子程序 ITcpClient_OnClose, 整数型, , 客户端关闭
+    .参数 pSender, 整数型
+    .参数 dwConnID, 整数型
+    .参数 enOperation, 整数型
+    .参数 iErrorCode, 整数型
+
+    .如果 (iErrorCode ＝ 0)
+        
+    .否则
+        
+    .如果结束
+    返回 (#HR_OK)
+    
+
+.子程序 ITcpClient_SendData, 逻辑型, , 发送数据
+    .参数 data, 字节集
+    .局部变量 pdata, 字节集
+    .局部变量 len, 整数型
+
+    .如果真 (m_hClient ＝ 0)
+        返回 (假)
+    .如果真结束
+    返回 (m_Client.SendBytes (m_hClient, data))
+
+.子程序 ITcpClient_Send, 逻辑型, , 发送数据
+    .参数 data, 字节集
+
+    .如果真 (m_hClient ＝ 0)
+        返回 (假)
+    .如果真结束
+    返回 (m_Client.SendBytes (m_hClient, data))
+    
+
+.子程序 启动客户端服务, 逻辑型, , 启动客户端服务
+    .参数 bSSL, 逻辑型, , 是否开启SSL
+    .参数 ip, 文本型, , 服务地址
+    .参数 port, 整数型, , 服务端口
+
+    返回 (ITcpClient_Start (ip, port, bSSL))
+
+.子程序 结束服务
+    ITcpClient_Destroy ()
+
+.子程序 客户端_发送, 逻辑型, , 发送组合协议数据
+    .参数 发送内容, 字节集, 可空
+
+    返回 (ITcpClient_SendData (发送内容))
+    
+    
+

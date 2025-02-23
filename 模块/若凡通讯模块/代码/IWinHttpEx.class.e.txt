@@ -1,0 +1,108 @@
+﻿.版本 2
+
+.程序集 IWinHttpEx, , 公开, 实现和windows系统组件winhttp基本一致的接口(由 IHttpAgent 组件实现),请调用一次 HPWinHttp_Init() 并确保返回为真(实验阶段)
+.子程序 Open, 逻辑型, 公开, 打开路径
+    .参数 Method, 文本型, , 请求方式
+    .参数 url, 文本型, , 访问的路径
+
+    
+
+.子程序 Close, , 公开, 关闭链接
+    
+
+.子程序 SetRequestHeader, , 公开, 添加 HTTP 协议头,重复添加为覆盖上一次数据
+    .参数 Name, 文本型, , 协议头
+    .参数 Value, 文本型, 可空, 值,不填为删除
+
+    
+
+.子程序 GetLastError, 整数型, 公开, 取最后错误
+    
+
+.子程序 GetLastErrorDesc, 文本型, 公开, 取最后错误描述
+    
+
+.子程序 Status, 短整数型, 公开, 取状态码
+    
+
+.子程序 IsUpgrade, 逻辑型, 公开, 检查是否升级协议
+    .参数 hAgent, 整数型
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 IsKeepAlive, 逻辑型, 公开, 检查是否有 Keep-Alive 标识
+    
+
+.子程序 GetVersion, 短整数型, 公开, 获取协议版本
+    
+
+.子程序 GetContentLength, 长整数型, 公开, 获取内容长度
+    
+
+.子程序 GetContentType, 文本型, 公开, 获取内容类型
+    
+
+.子程序 GetContentEncoding, 文本型, 公开, 获取内容编码
+    
+
+.子程序 GetTransferEncoding, 文本型, 公开, 获取传输编码
+    
+
+.子程序 GetUpgradeType, 整数型, 公开, 获取协议升级类型
+    
+
+.子程序 GetAllResponseHeaders, 逻辑型, 公开, 取得所有HTTP返回协议头
+    .参数 lpHeaders, TNVPair, 数组
+
+    
+
+.子程序 GetResponseHeader, 文本型, 公开, 取得HTTP返回协议头
+    .参数 lpszName, 文本型, , 协议头
+
+    
+
+.子程序 GetAllCookies, 逻辑型, 公开, 获取所有 Cookie
+    .参数 lpCookies, TNVPair, 数组
+
+    
+
+.子程序 GetCookie, 文本型, 公开, 获取 Cookie
+    .参数 lpszName, 文本型
+
+    
+
+.子程序 SetConnectTimeout, , 公开, 设置连接超时（毫秒，0：系统默认超时，默认：30000）
+    .参数 Timeout, 整数型
+
+    
+
+.子程序 SetRequestTimeout, , 公开, 设置请求超时（毫秒，0：系统默认超时，默认：30000）
+    .参数 Timeout, 整数型
+
+    
+
+.子程序 SendText, 逻辑型, 公开, 发送文本数据
+    .参数 body, 文本型, 可空
+
+    
+
+.子程序 SendBytes, 逻辑型, 公开, 发送字节集数据
+    .参数 body, 字节集, 可空
+
+    
+
+.子程序 Send, 逻辑型, 公开, 发送指针数据
+    .参数 data, 整数型, 可空
+    .参数 len, 整数型, 可空
+
+    
+
+.子程序 ResponseBody, 字节集, 公开, 获取响应体
+    
+
+.子程序 ResponseText, 文本型, 公开, 获取响应体
+    .参数 utf8, 逻辑型, 可空, utf8解码
+
+    
+

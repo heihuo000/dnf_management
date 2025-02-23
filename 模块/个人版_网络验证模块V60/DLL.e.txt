@@ -1,0 +1,14 @@
+﻿.版本 2
+
+.DLL命令 API_IsDebuggerPresent, 整数型, "kernel32.dll", "IsDebuggerPresent", 公开
+
+.DLL命令 _窗口是否可见, 整数型, "user32", "IsWindowVisible", 公开, 判断窗口是否可见  如窗口可见则返回TRUE（非零）
+    .参数 窗口句柄, 整数型, , 要测试的那个窗口的句柄
+
+.DLL命令 云下发更新, , "URLMON.DLL", "URLDownloadToFileA", 公开, 提供下载服务器文件例子：云下发更新 (0, 下载地址, 本地保存文件路径, 0, 0)
+    .参数 lpunknown, 整数型
+    .参数 lpcstr, 文本型
+    .参数 lpcstr, 文本型
+    .参数 dword, 整数型
+    .参数 CALLBACK, 整数型
+

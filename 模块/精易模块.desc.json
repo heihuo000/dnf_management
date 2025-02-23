@@ -1,0 +1,39 @@
+﻿{
+    "Rename": {
+        "Struct": [
+            {
+                "Dst": "精易_进程信息列表2",
+                "Src": "精易_进程信息列表"
+            },
+            {
+                "Dst": "精易_坐标2",
+                "Src": "精易_坐标"
+            },
+            {
+                "Dst": "精易_时间2",
+                "Src": "精易_时间"
+            },
+            {
+                "Dst": "OSVERSIONINFOEX2",
+                "Src": "OSVERSIONINFOEX"
+            },
+            {
+                "Dst": "STARTUPINFO2",
+                "Src": "STARTUPINFO"
+            },
+            {
+                "Dst": "URL_COMPONENTS2",
+                "Src": "URL_COMPONENTS"
+            },
+            {
+                "Dst": "精易_IP归属地2",
+                "Src": "精易_IP归属地"
+            },
+            {
+                "Dst": "JsonError2",
+                "Src": "JsonError"
+            }
+        ]
+    },
+    "Source": "$精易模块[v11.1.5].ec"
+}

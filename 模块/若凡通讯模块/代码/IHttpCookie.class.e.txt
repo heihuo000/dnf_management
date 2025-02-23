@@ -1,0 +1,93 @@
+﻿.版本 2
+
+.程序集 IHttpCookie, , 公开, Cookie管理器外放接口
+.子程序 MGR_LoadFromFile, 逻辑型, 公开, 从文件加载 Cookie
+    .参数 lpszFile, 文本型
+    .参数 bKeepExists, 逻辑型, , 保持存在
+
+    
+
+.子程序 MGR_SaveToFile, 逻辑型, 公开, 保存 Cookie 到文件
+    .参数 lpszFile, 文本型
+    .参数 bKeepExists, 逻辑型, , 保持存在
+
+    
+
+.子程序 MGR_ClearCookies, 逻辑型, 公开, 清理 Cookie
+    .参数 lpszDomain, 文本型, , 域
+    .参数 lpszPath, 文本型, , 路径
+
+    
+
+.子程序 MGR_RemoveExpiredCookies, 逻辑型, 公开, 清理过期 Cookie
+    .参数 lpszDomain, 文本型, , 域
+    .参数 lpszPath, 文本型, , 路径
+
+    
+
+.子程序 MGR_SetCookie, 逻辑型, 公开, 设置 Cookie
+    .参数 lpszName, 文本型, , 名称
+    .参数 lpszValue, 文本型, , 值
+    .参数 lpszDomain, 文本型, , 域
+    .参数 lpszPath, 文本型, , 路径
+    .参数 iMaxAge, 整数型, , 生命周期： > 0 –> 存活秒数； = 0 –> 立刻删除， < 0 –> 到应用程序结束
+    .参数 bHttpOnly, 逻辑型, , 是否有 HttpOnly 属性
+    .参数 bSecure, 逻辑型, , 是否有 secure 属性
+    .参数 enSameSite, 整数型, , SameSite 属性： 0 –> 无； 1 –> Strict； 2 –> LAX
+    .参数 bOnlyUpdateValueIfExists, 逻辑型, , 如果 Cookie 已存在是否只更新 Cookie 值
+
+    
+
+.子程序 MGR_DeleteCookie, 逻辑型, 公开, 删除 Cookie
+    .参数 lpszDomain, 文本型, , 域
+    .参数 lpszPath, 文本型, , 路径
+    .参数 lpszName, 文本型, , 名称
+
+    
+
+.子程序 MGR_SetEnableThirdPartyCookie, , 公开, 设置是否允许第三方 Cookie
+    .参数 bEnableThirdPartyCookie, 逻辑型
+
+    
+
+.子程序 MGR_IsEnableThirdPartyCookie, 逻辑型, 公开, 检查是否允许第三方 Cookie
+    
+
+.子程序 HLP_ParseExpires, 逻辑型, 公开, Cookie expires 字符串转换为整数
+    .参数 lpszExpires, 文本型, , expires 字符串
+    .参数 ptmExpires, 长整数型, 参考, expires 整数
+
+    
+
+.子程序 HLP_MakeExpiresStr, 逻辑型, 公开, 整数转换为 Cookie expires 字符串
+    .参数 tmExpires, 长整数型, , expires 整数
+    .参数 lpszExpires, 文本型, 参考, 字符串缓冲区
+
+    
+
+.子程序 HLP_ToString, 逻辑型, 公开, 生成 Cookie 字符串
+    .参数 lpszBuff, 文本型, 参考, 字符串缓冲区
+    .参数 lpszName, 文本型, , 名称
+    .参数 lpszValue, 文本型, , 值
+    .参数 lpszDomain, 文本型, , 域
+    .参数 lpszPath, 文本型, , 路径
+    .参数 iMaxAge, 整数型, , 生命周期： > 0 –> 存活秒数； = 0 –> 立刻删除， < 0 –> 到应用程序结束
+    .参数 bHttpOnly, 逻辑型, , 是否有 HttpOnly 属性
+    .参数 bSecure, 逻辑型, , 是否有 secure 属性
+    .参数 enSameSite, 整数型, , SameSite 属性： 0 –> 无； 1 –> Strict； 2 –> LA
+
+    
+
+.子程序 HLP_CurrentUTCTime, 长整数型, 公开, 获取当前 UTC 时间
+    
+
+.子程序 HLP_MaxAgeToExpires, 长整数型, 公开, Max-Age -> expires
+    .参数 iMaxAge, 整数型, , 生命周期： > 0 –> 存活秒数； = 0 –> 立刻删除， < 0 –> 到应用程序结束
+
+    
+
+.子程序 HLP_ExpiresToMaxAge, 整数型, 公开, Max-Age -> expires
+    .参数 tmExpires, 长整数型
+
+    
+

@@ -1,0 +1,194 @@
+﻿.版本 2
+
+.常量 SS_STARTING, "0", , 正在启动
+.常量 SS_STARTED, "1", , 已经启动
+.常量 SS_STOPPING, "2", , 正在停止
+.常量 SS_STOPPED, "3", , 已经停止
+.常量 SO_UNKNOWN, "0", , 未知
+.常量 SO_ACCEPT, "1", , 接受
+.常量 SO_CONNECT, "2", , 连接
+.常量 SO_SEND, "3", , 发送
+.常量 SO_RECEIVE, "4", , 接收
+.常量 SO_CLOSE, "5", , 关闭
+.常量 HR_OK, "0", , 成功
+.常量 HR_IGNORE, "1", , 忽略
+.常量 HR_ERROR, "2", , 错误
+.常量 FR_OK, "0", , 成功
+.常量 FR_LENGTH_TOO_LONG, "1", , 抓取长度过大
+.常量 FR_DATA_NOT_FOUND, "2", , 找不到 ConnID 对应的数据
+.常量 SP_PACK, "0", , 打包模式（默认） ：尽量把多个发送操作的数据组合在一起发送，增加传输效率
+.常量 SP_SAFE, "1", , 安全模式   ：尽量把多个发送操作的数据组合在一起发送，并控制传输速度，避免缓冲区溢出
+.常量 SP_DIRECT, "2", , 直接模式   ：对每一个发送操作都直接投递，适用于负载不高但要求实时性较高的场合
+.常量 OSSP_NONE, "0", , 不同步（默认） ：不同步 OnSend 事件，此时可能同时触发 OnReceive 和 OnClose 事件
+.常量 OSSP_CLOSE, "1", , 同步 OnClose ：只同步 OnClose 事件，此时可能同时触发 OnReceive 事件
+.常量 OSSP_RECEIVE, "2", , 同步 OnReceive ：（只用于 TCP 组件）同步 OnReceive 和 OnClose 事件，此处不可能同时触发 OnReceive 或 OnClose 事件
+.常量 RAP_NONE, "0", , 不重用
+.常量 RAP_ADDR_ONLY, "1", , 仅重用地址
+.常量 RAP_ADDR_AND_PORT, "2", , 重用地址和端口
+.常量 SE_OK, "0", , 成功
+.常量 SE_ILLEGAL_STATE, "1", , 当前状态不允许操作
+.常量 SE_INVALID_PARAM, "2", , 非法参数
+.常量 SE_SOCKET_CREATE, "3", , 创建 SOCKET 失败
+.常量 SE_SOCKET_BIND, "4", , 绑定 SOCKET 失败
+.常量 SE_SOCKET_PREPARE, "5", , 设置 SOCKET 失败
+.常量 SE_SOCKET_LISTEN, "6", , 监听 SOCKET 失败
+.常量 SE_CP_CREATE, "7", , 创建完成端口失败
+.常量 SE_WORKER_THREAD_CREATE, "8", , 创建工作线程失败
+.常量 SE_DETECT_THREAD_CREATE, "9", , 创建监测线程失败
+.常量 SE_SOCKE_ATTACH_TO_CP, "10", , 绑定完成端口失败
+.常量 SE_CONNECT_SERVER, "11", , 连接服务器失败
+.常量 SE_NETWORK, "12", , 网络错误
+.常量 SE_DATA_PROC, "13", , 数据处理错误
+.常量 SE_DATA_SEND, "14", , 数据发送失败
+.常量 SE_SSL_ENV_NOT_READY, "101", , SSL 环境未就绪
+.常量 SSL_SM_CLIENT, "0", , 客户端模式
+.常量 SSL_SM_SERVER, "1", , 服务端模式
+.常量 SSL_VM_NONE, "0", , 没有
+.常量 SSL_VM_PEER, "1", , 相同证书
+.常量 SSL_VM_FAIL_IF_NO_PEER_CERT, "2", , 如果没有相同证书失败
+.常量 SSL_VM_CLIENT_ONCE, "4"
+.常量 SSL_SSI_MIN, "0"
+.常量 SSL_SSI_CTX, "0", , SSL CTX    （输出类型：SSL_CTX*）
+.常量 SSL_SSI_CTX_METHOD, "1", , SSL CTX Mehtod  （输出类型：SSL_METHOD*）
+.常量 SSL_SSI_CTX_CIPHERS, "2", , SSL CTX Ciphers  （输出类型：STACK_OF(SSL_CIPHER)*）
+.常量 SSL_SSI_CTX_CERT_STORE, "3", , SSL CTX Cert Store （输出类型：X509_STORE*）
+.常量 SSL_SSI_SERVER_NAME_TYPE, "4", , Server Name Type  （输出类型：int）
+.常量 SSL_SSI_SERVER_NAME, "5", , Server Name   （输出类型：LPCSTR）
+.常量 SSL_SSI_VERSION, "6", , SSL Version   （输出类型：LPCSTR）
+.常量 SSL_SSI_METHOD, "7", , SSL Method   （输出类型：SSL_METHOD*）
+.常量 SSL_SSI_CERT, "8", , SSL Cert    （输出类型：X509*）
+.常量 SSL_SSI_PKEY, "9", , SSL Private Key  （输出类型：EVP_PKEY*）
+.常量 SSL_SSI_CURRENT_CIPHER, "10", , SSL Current Cipher （输出类型：SSL_CIPHER*）
+.常量 SSL_SSI_CIPHERS, "11", , SSL Available Ciphers（输出类型：STACK_OF(SSL_CIPHER)*）
+.常量 SSL_SSI_CLIENT_CIPHERS, "12", , SSL Client Ciphers （输出类型：STACK_OF(SSL_CIPHER)*）
+.常量 SSL_SSI_PEER_CERT, "13", , SSL Peer Cert  （输出类型：X509*）
+.常量 SSL_SSI_PEER_CERT_CHAIN, "14", , SSL Peer Cert Chain （输出类型：STACK_OF(X509)*）
+.常量 SSL_SSI_VERIFIED_CHAIN, "15", , SSL Verified Chain （输出类型：STACK_OF(X509)*）
+.常量 SSL_SSI_MAX, "15"
+.常量 HV_1_0, "1", , HTTP/1.0
+.常量 HV_1_1, "257", , HTTP/1.1
+.常量 HUF_SCHEMA, "0", , 概要
+.常量 HUF_HOST, "1", , 主机
+.常量 HUF_PORT, "2", , 端口
+.常量 HUF_PATH, "3", , 路径
+.常量 HUF_QUERY, "4", , 查询
+.常量 HUF_FRAGMENT, "5", , 片段
+.常量 HUF_USERINFO, "6", , 用户信息
+.常量 HUF_MAX, "7", , 最大
+.常量 HPR_OK, "0", , 解析成功
+.常量 HPR_SKIP_BODY, "1", , 跳过当前请求 BODY（仅用于 OnHeadersComplete 事件）
+.常量 HPR_UPGRADE, "2", , 升级协议（仅用于 OnHeadersComplete 事件）
+.常量 HPR_ERROR, "-1", , 解析错误，终止解析，断开连接
+.常量 HUT_NONE, "0", , 没有升级
+.常量 HUT_WEB_SOCKET, "1", , WebSocket
+.常量 HUT_HTTP_TUNNEL, "2", , HTTP 隧道
+.常量 HUT_UNKNOWN, "-1", , 未知类型
+.常量 TRP_CALL_FAIL, "0", , 立刻返回失败
+.常量 TRP_WAIT_FOR, "1", , 等待（直到成功、超时或线程池关闭等原因导致失败）
+.常量 TRP_CALLER_RUN, "2", , 调用者线程直接执行
+.常量 TBT_COPY, "0", , 深拷贝->pBuffer 复制到 TSocketTask 对象。此后 TSocketTask 对象与 pBuffer 不再有任何关联,-> 适用于 pBuffer 不大或 pBuffer 生命周期不受控的场景
+.常量 TBT_REFER, "1", , 浅拷贝->pBuffer 不复制到 TSocketTask 对象，需确保 TSocketTask 对象生命周期内 pBuffer 必须有效,-> 适用于 pBuffer 较大或 pBuffer 可重用，并且 pBuffer 生命周期受控的场景
+.常量 TBT_ATTACH, "2", , 附属->执行浅拷贝，但 TSocketTask 对象会获得 pBuffer 的所有权，并负责释放 pBuffer，避免多次缓冲区拷贝,-> 注意：pBuffer 必须由 SYS_Malloc() 函数分配才能使用本类型，否则可能会发生内存访问错误
+.常量 CM_UNICAST, "-1", , 单播
+.常量 CM_MULTICAST, "0", , 组播
+.常量 CM_BROADCAST, "1", , 广播
+.常量 IPT_ALL, "0", , 所有
+.常量 IPT_IPV4, "1", , IPv4
+.常量 IPT_IPV6, "2", , IPv6
+.常量 HSC_CONTINUE, "100"
+.常量 HSC_SWITCHING_PROTOCOLS, "101"
+.常量 HSC_PROCESSING, "102"
+.常量 HSC_OK, "200"
+.常量 HSC_CREATED, "201"
+.常量 HSC_ACCEPTED, "202"
+.常量 HSC_NON_AUTHORITATIVE_INFORMATION, "203"
+.常量 HSC_NO_CONTENT, "204"
+.常量 HSC_RESET_CONTENT, "205"
+.常量 HSC_PARTIAL_CONTENT, "206"
+.常量 HSC_MULTI_STATUS, "207"
+.常量 HSC_ALREADY_REPORTED, "208"
+.常量 HSC_IM_USED, "226"
+.常量 HSC_MULTIPLE_CHOICES, "300"
+.常量 HSC_MOVED_PERMANENTLY, "301"
+.常量 HSC_MOVED_TEMPORARILY, "302"
+.常量 HSC_SEE_OTHER, "303"
+.常量 HSC_NOT_MODIFIED, "304"
+.常量 HSC_USE_PROXY, "305"
+.常量 HSC_SWITCH_PROXY, "306"
+.常量 HSC_TEMPORARY_REDIRECT, "307"
+.常量 HSC_PERMANENT_REDIRECT, "308"
+.常量 HSC_BAD_REQUEST, "400"
+.常量 HSC_UNAUTHORIZED, "401"
+.常量 HSC_PAYMENT_REQUIRED, "402"
+.常量 HSC_FORBIDDEN, "403"
+.常量 HSC_NOT_FOUND, "404"
+.常量 HSC_METHOD_NOT_ALLOWED, "405"
+.常量 HSC_NOT_ACCEPTABLE, "406"
+.常量 HSC_PROXY_AUTHENTICATION_REQUIRED, "407"
+.常量 HSC_REQUEST_TIMEOUT, "408"
+.常量 HSC_CONFLICT, "409"
+.常量 HSC_GONE, "410"
+.常量 HSC_LENGTH_REQUIRED, "411"
+.常量 HSC_PRECONDITION_FAILED, "412"
+.常量 HSC_REQUEST_ENTITY_TOO_LARGE, "413"
+.常量 HSC_REQUEST_URI_TOO_LONG, "414"
+.常量 HSC_UNSUPPORTED_MEDIA_TYPE, "415"
+.常量 HSC_REQUESTED_RANGE_NOT_SATISFIABLE, "416"
+.常量 HSC_EXPECTATION_FAILED, "417"
+.常量 HSC_MISDIRECTED_REQUEST, "421"
+.常量 HSC_UNPROCESSABLE_ENTITY, "422"
+.常量 HSC_LOCKED, "423"
+.常量 HSC_FAILED_DEPENDENCY, "424"
+.常量 HSC_UNORDERED_COLLECTION, "425"
+.常量 HSC_UPGRADE_REQUIRED, "426"
+.常量 HSC_PRECONDITION_REQUIRED, "428"
+.常量 HSC_TOO_MANY_REQUESTS, "429"
+.常量 HSC_REQUEST_HEADER_FIELDS_TOO_LARGE, "431"
+.常量 HSC_RETRY_WITH, "449"
+.常量 HSC_UNAVAILABLE_FOR_LEGAL_REASONS, "451"
+.常量 HSC_INTERNAL_SERVER_ERROR, "500"
+.常量 HSC_NOT_IMPLEMENTED, "501"
+.常量 HSC_BAD_GATEWAY, "502"
+.常量 HSC_SERVICE_UNAVAILABLE, "503"
+.常量 HSC_GATEWAY_TIMEOUT, "504"
+.常量 HSC_HTTP_VERSION_NOT_SUPPORTED, "505"
+.常量 HSC_VARIANT_ALSO_NEGOTIATES, "506"
+.常量 HSC_INSUFFICIENT_STORAGE, "507"
+.常量 HSC_LOOP_DETECTED, "508"
+.常量 HSC_BANDWIDTH_LIMIT_EXCEEDED, "509"
+.常量 HSC_NOT_EXTENDED, "510"
+.常量 HSC_NETWORK_AUTHENTICATION_REQUIRED, "511"
+.常量 HSC_UNPARSEABLE_RESPONSE_HEADERS, "600"
+.常量 CRLF, "“\r\n”"
+.常量 NV_SEPARATOR_CHAR, "“=”"
+.常量 HEADER_SEPARATOR, "“: ”"
+.常量 COOKIE_TOKENIZE, "“; ”"
+.常量 STR_HTTP_1_0, "“HTTP/1.0”"
+.常量 STR_HTTP_1_1, "“HTTP/1.1”"
+.常量 HOST_HEADER, "“Host”"
+.常量 COOKIE_HEADER, "“Cookie”"
+.常量 SET_COOKIE_HEADER, "“Set-Cookie”"
+.常量 CONTENT_TYPE_HEADER, "“Content-Type”"
+.常量 CONTENT_LENGTH_HEADER, "“Content-Length”"
+.常量 CONTENT_ENCODING_HEADER, "“Content-Encoding”"
+.常量 TRANSFER_ENCODING_HEADER, "“Transfer-Encoding”"
+.常量 UPGRADE_HEADER, "“Upgrade”"
+.常量 WEB_SOCKET_HEADER_VALUE, "“WebSocket”"
+.常量 HTTP_METHOD_POST, "“POST”"
+.常量 HTTP_METHOD_PUT, "“PUT”"
+.常量 HTTP_METHOD_PATCH, "“PATCH”"
+.常量 HTTP_METHOD_GET, "“GET”"
+.常量 HTTP_METHOD_DELETE, "“DELETE”"
+.常量 HTTP_METHOD_HEAD, "“HEAD”"
+.常量 HTTP_METHOD_TRACE, "“TRACE”"
+.常量 HTTP_METHOD_OPTIONS, "“OPTIONS”"
+.常量 HTTP_METHOD_CONNECT, "“CONNECT”"
+.常量 MIN_WS_HEADER_LEN, "2"
+.常量 MAX_WS_HEADER_LEN, "14"
+.常量 CONVERT_BUFFER_SIZE_ERROR, "-5", , 输出缓冲区不足
+.常量 CONVERT_INPUT_DATA_ERROR, "-3", , 输入数据不正确
+.常量 CONVERT_SUCCESS, "0", , 成功
+.常量 CONVERT_INIT_ERROR, "1", , 没有初始化数据
+.常量 CONVERT_GET_LENGTH_ERROR, "2", , 获取长度错误
+.常量 CONVERT_MALLOC_ERROR, "3", , 申请内存错误
+.常量 CONVERT_ERROR, "4", , 转换错误

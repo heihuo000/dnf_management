@@ -1,0 +1,101 @@
+﻿.版本 2
+
+.程序集 IThreadPool, , 公开, 线程池
+.子程序 Create, 逻辑型, 公开, 创建 IHPThreadPool 对象
+    
+
+.子程序 Destroy, , 公开, 销毁 IHPThreadPool 对象
+    
+
+.子程序 Start, 逻辑型, 公开, 启动线程池组件,TRUE -- 成功,FALSE -- 失败，可通过 SYS_GetLastError() 获取系统错误代码
+    .参数 dwThreadCount, 整数型, , 线程数量，（默认：0）
+    .参数 dwMaxQueueSize, 整数型, , 任务队列最大容量（0：不限制，默认：0）
+    .参数 enRejectedPolicy, 整数型, , 任务拒绝处理策略,#TRP_ 开头常量
+    .参数 dwStackSize, 整数型, , 线程堆栈空间大小（默认：0 -> 操作系统默认）
+
+    
+
+.子程序 Stop, 逻辑型, 公开, 在规定时间内关闭线程池组件，如果工作线程在最大等待时间内未能正常关闭，会尝试强制关闭，这种情况下很可能会造成系统资源泄漏,TRUE -- 成功,FALSE -- 失败，可通过 SYS_GetLastError() 获取系统错误代码
+    .参数 dwMaxWait, 整数型, 可空, 最大等待时间（毫秒，默认：INFINITE，一直等待）
+
+    
+
+.子程序 Wait, 逻辑型, 公开, 名称：等待 描述：等待通信组件停止运行
+    .参数 dwMilliseconds, 整数型, , 超时时间（毫秒，默认：-1，永不超时）
+
+    
+
+.子程序 Submit, 逻辑型, 公开, 向线程池提交异步任务,TRUE -- 成功,FALSE -- 失败，可通过 SYS_GetLastError() 获取系统错误代码,其中，错误码 #ERROR_DESTINATION_ELEMENT_FULL 表示任务队列已满
+    .参数 fnTaskProc, 子程序指针, , 任务处理函数, TaskFunc(pvArg 整数型)
+    .参数 pvArg, 整数型, , 任务参数
+    .参数 dwMaxWait, 整数型, 可空, 任务提交最大等待时间（仅对 TRP_WAIT_FOR 类型线程池生效，默认：#INFINITE，一直等待）
+
+    
+
+.子程序 Submit_Task, 逻辑型, 公开, 创建 TSocketTask 对象并向线程池提交异步 Socket 任务,TRUE -- 成功,FALSE -- 失败，可通过 SYS_GetLastError() 获取系统错误代码,其中，错误码 ERROR_DESTINATION_ELEMENT_FULL 表示任务队列已满
+    .参数 fnTaskProc, 子程序指针, , 任务入口函数
+    .参数 pSender, 整数型, , 发起对象
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pBuffer, 整数型, 可空, 数据缓冲区
+    .参数 iBuffLen, 整数型, 可空, 数据缓冲区长度
+    .参数 enBuffType, 整数型, 可空, 数据缓冲区类型,#TBT_ （默认：#TBT_COPY）
+    .参数 wParam, 整数型, 可空, 自定义参数
+    .参数 lParam, 整数型, 可空, 自定义参数
+    .参数 dwMaxWait, 整数型, 可空, 任务提交最大等待时间（仅对  TRP_WAIT_FOR 类型线程池生效，默认：INFINITE，一直等待）
+
+    
+
+.子程序 Ptr2Task, 逻辑型, 公开, 指针转换TSocketTask对象
+    .参数 pTask, 整数型
+    .参数 retResult, TSocketTask, 参考
+
+    
+
+.子程序 Release_Task, , 公开, 销毁 TSocketTask 对象
+    .参数 pTask, 整数型
+
+    
+
+.子程序 AdjustThreadCount, 逻辑型, 公开, 增加或减少线程池的工作线程数量,TRUE -- 成功,FALSE -- 失败，可通过 SYS_GetLastError() 获取系统错误代码
+    .参数 dwNewThreadCount, 整数型, , 线程数量,>0 -> dwNewThreadCount,=0 -> (CPU核数 * 2 + 2),<0 -> (CPU核数 * (-dwNewThreadCount))
+
+    
+
+.子程序 HasStarted, 逻辑型, 公开, 检查线程池组件是否已启动
+    
+
+.子程序 GetState, 整数型, 公开, 查看线程池组件当前状态
+    
+
+.子程序 GetQueueSize, 整数型, 公开, 获取当前任务队列大小
+    
+
+.子程序 GetThreadCount, 整数型, 公开, 获取工作线程数量
+    
+
+.子程序 GetMaxQueueSize, 整数型, 公开, 获取任务队列最大容量
+    
+
+.子程序 GetRejectedPolicy, 整数型, 公开, 获取任务拒绝处理策略
+    
+
+.子程序 OnStartup, , 公开
+    .参数 fn, 子程序指针, , void OnStartup (整数型 pThreadPool)
+
+    
+
+.子程序 OnShutdown, , 公开
+    .参数 fn, 子程序指针, , void OnShutdown (整数型 pThreadPool)
+
+    
+
+.子程序 OnWorkerThreadEnd, , 公开
+    .参数 fn, 子程序指针, , void OnWorkerThreadEnd (整数型 pThreadPool,整数型 dwThreadID)
+
+    
+
+.子程序 OnWorkerThreadStart, , 公开
+    .参数 fn, 子程序指针, , void OnWorkerThreadStart (整数型 pThreadPool,整数型 dwThreadID)
+
+    
+

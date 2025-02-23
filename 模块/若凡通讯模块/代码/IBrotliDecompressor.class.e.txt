@@ -1,0 +1,24 @@
+﻿.版本 2
+
+.程序集 IBrotliDecompressor, , 公开, Brotli 解压器对象
+.子程序 Process, 逻辑型, 公开, 执行解压,可循环调用以解压流式或分段数据
+    .参数 pData, 整数型, , 待解压数据缓冲区
+    .参数 iLength, 整数型, , 待解压数据长度
+    .参数 pContext, 整数型, , 解压回调函数 Fn_DecompressDataCallback 的上下文参数
+
+    
+
+.子程序 IsValid, 逻辑型, 公开, 检测解压器是否可用
+    
+
+.子程序 Reset, 逻辑型, 公开, 重置解压器
+    
+
+.子程序 Destroy, , 公开, 释放对象
+    
+
+.子程序 Create, 逻辑型, 公开, 创建 Brotli 解压器对象
+    .参数 fnCallback, 子程序指针, , typedef BOOL (__HP_CALL *Fn_DataCallback)(const BYTE* pData, int iLength, PVOID pContext);
+
+    
+

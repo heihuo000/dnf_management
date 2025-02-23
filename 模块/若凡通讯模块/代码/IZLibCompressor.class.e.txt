@@ -1,0 +1,35 @@
+﻿.版本 2
+
+.程序集 IZLibCompressor, , 公开, ZLib 压缩器对象
+.子程序 Process, 逻辑型, 公开, 执行压缩,可循环调用以压缩流式或分段数据
+    .参数 pData, 整数型, , 待压缩数据缓冲区
+    .参数 iLength, 整数型, , 待压缩数据长度
+    .参数 bLast, 逻辑型
+    .参数 pContext, 整数型, , 压缩回调函数 Fn_CompressDataCallback 的上下文参数
+
+    
+
+.子程序 IsValid, 逻辑型, 公开, 检测压缩器是否可用
+    
+
+.子程序 Reset, 逻辑型, 公开, 重置压缩器
+    
+
+.子程序 Destroy, , 公开, 释放对象
+    
+
+.子程序 Create, 逻辑型, 公开, 创建 ZLib 压缩器对象（默认参数：iWindowBits = 15, iLevel = -1, iMethod = 8, iMemLevel = 8, iStrategy = 0）
+    .参数 fnCallback, 子程序指针, , typedef BOOL (__HP_CALL *Fn_DataCallback)(const BYTE* pData, int iLength, PVOID pContext);
+
+    
+
+.子程序 CreateEx, 逻辑型, 公开, 创建 ZLib 压缩器对象
+    .参数 fnCallback, 子程序指针, , typedef BOOL (__HP_CALL *Fn_DataCallback)(const BYTE* pData, int iLength, PVOID pContext);
+    .参数 iWindowBits, 整数型
+    .参数 iLevel, 整数型
+    .参数 iMethod, 整数型
+    .参数 iMemLevel, 整数型
+    .参数 iStrategy, 整数型
+
+    
+

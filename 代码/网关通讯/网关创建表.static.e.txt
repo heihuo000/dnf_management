@@ -1,0 +1,158 @@
+﻿.版本 2
+.支持库 mysql
+
+.程序集 网关创建表
+.子程序 CDK激活码_创建表, 逻辑型
+    .参数 sql句柄, 整数型, , sql句柄
+    .参数 库名, 文本型, , sql库
+    .参数 表名, 文本型, , sql表
+    .参数 主KEY项, 文本型
+    .参数 表项1, 文本型
+    .参数 表项2, 文本型
+    .参数 表项3, 文本型
+    .局部变量 局_SQL语句, 文本型
+
+    选择库 (sql句柄, 库名)
+    .如果 (执行SQL语句 (sql句柄, “CREATE TABLE `” ＋ 库名 ＋ “`.`” ＋ 表名 ＋ “` (`” ＋ 主KEY项 ＋ “` int NOT NULL AUTO_INCREMENT, `” ＋ 表项1 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项2 ＋ “` int NOT NULL , `” ＋ 表项3 ＋ “` int NOT NULL ,PRIMARY KEY (`” ＋ 主KEY项 ＋ “`)) ENGINE = MyISAM;”))
+        返回 (真)
+    .否则
+        返回 (假)
+        
+    .如果结束
+    
+    
+    
+
+.子程序 摆摊背包存储_创建表, 逻辑型
+    .参数 sql句柄, 整数型, , sql句柄
+    .参数 库名, 文本型, , sql库
+    .参数 表名, 文本型, , sql表
+    .参数 主KEY项, 文本型
+    .参数 表项1, 文本型
+    .局部变量 局_SQL语句, 文本型
+
+    选择库 (sql句柄, 库名)
+    .如果 (执行SQL语句 (sql句柄, “CREATE TABLE `” ＋ 库名 ＋ “`.`” ＋ 表名 ＋ “` (`” ＋ 主KEY项 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `” ＋ 表项1 ＋ “` blob  ,PRIMARY KEY (`” ＋ 主KEY项 ＋ “`)) ENGINE = MyISAM;”))
+        返回 (真)
+    .否则
+        返回 (假)
+    .如果结束
+    
+
+.子程序 刷图记录_创建表, 逻辑型
+    .参数 sql句柄, 整数型, , sql句柄
+    .参数 库名, 文本型, , sql库
+    .参数 表名, 文本型, , sql表
+    .参数 主KEY项, 文本型
+    .参数 表项1, 文本型
+    .参数 表项2, 文本型
+    .参数 表项3, 文本型
+    .参数 表项4, 文本型
+    .参数 表项5, 文本型
+    .参数 表项6, 文本型
+    .参数 表项7, 文本型
+    .参数 表项8, 文本型
+    .参数 表项9, 文本型
+    .参数 表项10, 文本型
+    .参数 表项11, 文本型
+    .参数 表项12, 文本型
+    .参数 表项13, 文本型
+
+    .局部变量 局_SQL语句, 文本型
+
+    选择库 (sql句柄, 库名)
+    .如果 (执行SQL语句 (sql句柄, “CREATE TABLE `” ＋ 库名 ＋ “`.`” ＋ 表名 ＋ “` (`” ＋ 主KEY项 ＋ “` int NOT NULL AUTO_INCREMENT, `” ＋ 表项1 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项2 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项3 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项4 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项5 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项6 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项7 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项8 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项9 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项10 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项11 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项12 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项13 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,PRIMARY KEY (`” ＋ 主KEY项 ＋ “`)) ENGINE = MyISAM;”))
+        返回 (真)
+    .否则
+        返回 (假)
+        
+    .如果结束
+    
+    
+    
+
+.子程序 喊话记录_创建表, 逻辑型
+    .参数 sql句柄, 整数型, , sql句柄
+    .参数 库名, 文本型, , sql库
+    .参数 表名, 文本型, , sql表
+    .参数 主KEY项, 文本型
+    .参数 表项1, 文本型
+    .参数 表项2, 文本型
+    .参数 表项3, 文本型
+    .参数 表项4, 文本型
+    .参数 表项5, 文本型
+    .参数 表项6, 文本型
+    .参数 表项7, 文本型
+    .参数 表项8, 文本型
+    .局部变量 局_SQL语句, 文本型
+
+    选择库 (sql句柄, 库名)
+    .如果 (执行SQL语句 (sql句柄, “CREATE TABLE `” ＋ 库名 ＋ “`.`” ＋ 表名 ＋ “` (`” ＋ 主KEY项 ＋ “` int NOT NULL AUTO_INCREMENT, `” ＋ 表项1 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项2 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项3 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项4 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项5 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项6 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项7 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项8 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,PRIMARY KEY (`” ＋ 主KEY项 ＋ “`)) ENGINE = MyISAM;”))
+        返回 (真)
+    .否则
+        返回 (假)
+        
+    .如果结束
+    
+    
+    
+
+.子程序 机器人_创建表, 逻辑型
+    .参数 sql句柄, 整数型, , sql句柄
+    .参数 库名, 文本型, , sql库
+    .参数 表名, 文本型, , sql表
+    .参数 主KEY项, 文本型
+    .参数 表项1, 文本型
+    .参数 表项2, 文本型
+    .参数 表项3, 文本型
+    .参数 表项4, 文本型
+    .参数 表项5, 文本型
+    .参数 表项6, 文本型
+    .参数 表项7, 文本型
+    .参数 表项8, 文本型
+    .参数 表项9, 文本型
+    .参数 表项10, 文本型
+    .参数 表项11, 文本型
+    .局部变量 局_SQL语句, 文本型
+
+    选择库 (sql句柄, 库名)
+    .如果 (执行SQL语句 (sql句柄, “CREATE TABLE `” ＋ 库名 ＋ “`.`” ＋ 表名 ＋ “` (`” ＋ 主KEY项 ＋ “` int NOT NULL AUTO_INCREMENT, `” ＋ 表项1 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项2 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项3 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项4 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项5 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项6 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项7 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项8 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项9 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项10 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项11 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,PRIMARY KEY (`” ＋ 主KEY项 ＋ “`)) ENGINE = MyISAM;”))
+        
+        返回 (真)
+    .否则
+        返回 (假)
+        
+    .如果结束
+    
+    
+    
+
+.子程序 网关_站街表创建表, 逻辑型
+    .参数 sql句柄, 整数型, , sql句柄
+    .参数 库名, 文本型, , sql库
+    .参数 表名, 文本型, , sql表
+    .参数 主KEY项, 文本型
+    .参数 表项1, 文本型
+    .参数 表项2, 文本型
+    .参数 表项3, 文本型
+    .参数 表项4, 文本型
+    .参数 表项5, 文本型
+    .参数 表项6, 文本型
+    .参数 表项7, 文本型
+    .参数 表项8, 文本型
+    .参数 表项9, 文本型
+    .参数 表项10, 文本型
+    .参数 表项11, 文本型
+    .参数 表项12, 文本型
+    .参数 表项13, 文本型
+    .参数 表项14, 文本型
+    .局部变量 局_SQL语句, 文本型
+
+    选择库 (sql句柄, 库名)
+    .如果 (执行SQL语句 (sql句柄, “CREATE TABLE `” ＋ 库名 ＋ “`.`” ＋ 表名 ＋ “` (`” ＋ 主KEY项 ＋ “` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项1 ＋ “` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `” ＋ 表项2 ＋ “` int(10) NOT NULL  , `” ＋ 表项3 ＋ “` int(10) NOT NULL  , `” ＋ 表项4 ＋ “` int(10) NOT NULL  , `” ＋ 表项5 ＋ “` int(10) NOT NULL  , `” ＋ 表项6 ＋ “` int(10) NOT NULL  , `” ＋ 表项7 ＋ “` int(10) NOT NULL  , `” ＋ 表项8 ＋ “` int(10) NOT NULL  , `” ＋ 表项9 ＋ “` int(10) NOT NULL  , `” ＋ 表项10 ＋ “` int(10) NOT NULL  , `” ＋ 表项11 ＋ “` int(15) NOT NULL  , `” ＋ 表项12 ＋ “` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL  , `” ＋ 表项13 ＋ “` int(10) NOT NULL  , `” ＋ 表项14 ＋ “` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,PRIMARY KEY (`” ＋ 主KEY项 ＋ “`)) ENGINE = MyISAM;”))
+        返回 (真)
+    .否则
+        返回 (假)
+    .如果结束
+    
+

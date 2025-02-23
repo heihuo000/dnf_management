@@ -1,0 +1,30 @@
+此掉落特效功能DIY功能很大，调配合理将有不一样的游戏体验
+
+例如: 给指定装备配置音效或者掉落特效 ，可单件设置可以全局设置
+
+全局是指，例如我只想史诗品级掉落特效，就勾选史诗品级栏勾选
+
+
+
+//普通掉落音效 LEGENDARY_EPIC_ITEM_FALL_02
+
+//神话掉落音效 MYTHOLOGY_ITEM_DROP
+
+//许愿音效 MYTHOLOGY_ITEM_SIROCCO
+
+//超界音效 3KINGDOM_CARD_FRONT
+
+//台服普通ss掉落音效 LEGENDARY_EPIC_ITEM_FALL
+
+
+音效查询方式可以去/SoundPacks/sounds_equip_acc.npk
+
+audio.xml 可以查询 音效名称
+
+
+
+选择台服史诗特效无需导入ani一般PVF都自带!
+
+想要发挥此功能需要导入pvf，傻瓜包文件与客户端NPK文件
+
+想要更多掉落效果拓展请联系作者，带上做好的文件

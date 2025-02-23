@@ -1,0 +1,735 @@
+﻿.版本 2
+
+.程序集 IHttpServer, , 公开, HttpServerListener 对象，请自己创建和销毁，目的是保证安全
+.子程序 Start, 逻辑型, 公开, 名称：启动通信组件 描述：启动服务端通信组件，启动完成后可开始接收客户端连接并收发数据,TRUE-- 成功,FALSE-- 失败，可通过 HP_Server_GetLastError() 获取错误代码,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 pszBindAddress, 文本型, 可空, 监听地址,为空默认:"0.0.0.0"
+    .参数 usPort, 整数型, , 监听端口
+
+    
+
+.子程序 Stop, 逻辑型, 公开, 名称：关闭通信组件 描述：关闭服务端通信组件，关闭完成后断开所有客户端连接并释放所有资源,TRUE-- 成功,FALSE-- 失败，可通过 HP_Server_GetLastError() 获取错误代码,/
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 Wait, 逻辑型, 公开, 名称：等待 描述：等待通信组件停止运行
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwMilliseconds, 整数型, , 超时时间（毫秒，默认：-1，永不超时）
+
+    
+
+.子程序 Send, 逻辑型, 公开, 名称：发送数据 描述：向指定连接发送数据,TRUE-- 成功,FALSE-- 失败，可通过 SYS_GetLastError() 获取 Windows 错误代码,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pBuffer, 整数型, , 发送缓冲区
+    .参数 iLength, 整数型, , 发送缓冲区长度
+
+    
+
+.子程序 SendBytes, 逻辑型, 公开, 名称：发送数据 描述：向指定连接发送数据,TRUE-- 成功,FALSE-- 失败，可通过 SYS_GetLastError() 获取 Windows 错误代码,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pBuffer, 字节集, , 发送缓冲区
+
+    
+
+.子程序 SendPart, 逻辑型, 公开, 名称：发送数据 描述：向指定连接发送数据,TRUE-- 成功,FALSE-- 失败，可通过 SYS_GetLastError() 获取 Windows 错误代码,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pBuffer, 整数型, , 发送缓冲区
+    .参数 iLength, 整数型, , 发送缓冲区长度
+    .参数 iOffset, 整数型, , 发送缓冲区指针偏移量
+
+    
+
+.子程序 SendPackets, 逻辑型, 公开, 名称：发送多组数据 描述：向指定连接发送多组数据,TRUE-- 成功,FALSE-- 失败，可通过 SYS_GetLastError() 获取 Windows 错误代码,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pBuffer, WSABUF, 数组, 发送缓冲区
+
+    
+
+.子程序 IsSecure, 逻辑型, 公开, 检测是否为安全连接（SSL/HTTPS）
+    .参数 hServer, 整数型
+
+    
+
+.子程序 Disconnect, 逻辑型, 公开, 名称：断开连接 描述：断开与某个客户端的连接,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 bForce, 逻辑型, , 是否强制断开连接
+
+    
+
+.子程序 DisconnectLongConnections, 逻辑型, 公开, 名称：断开超时连接 描述：断开超过指定时长的连接,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwPeriod, 整数型, , 时长（毫秒）
+    .参数 bForce, 逻辑型, , 是否强制断开连接
+
+    
+
+.子程序 DisconnectSilenceConnections, 逻辑型, 公开, 名称：断开静默连接 描述：断开超过指定时长的静默连接,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwPeriod, 整数型, , 时长（毫秒）
+    .参数 bForce, 逻辑型, , 是否强制断开连接
+
+    
+
+.子程序 SetConnectionExtra, 逻辑型, 公开, 名称：设置连接的附加数据 描述：是否为连接【可选】绑定附加数据或者【可选】绑定什么样的数据，均由应用程序只身决定,TRUE-- 成功,FALSE-- 失败（无效的连接 ID）,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pExtra, 整数型, , 数据指针
+
+    
+
+.子程序 GetConnectionExtra, 逻辑型, 公开, 名称：获取连接的附加数据 描述：是否为连接绑定附加数据或者绑定什么样的数据，均由应用程序只身决定,TRUE-- 成功,FALSE-- 失败（无效的连接 ID）,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pExtra, 整数型, 参考, 数据指针
+
+    
+
+.子程序 HasStarted, 逻辑型, 公开, 检查通信组件是否已启动
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetState, 整数型, 公开, 查看通信组件当前状态，#SS_ 开头常量
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetLastError, 整数型, 公开, 获取最近一次失败操作的错误代码
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetLastErrorDesc, 文本型, 公开, 获取最近一次失败操作的错误描述
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetPendingDataLength, 逻辑型, 公开, 获取连接中未发出数据的长度
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 piPending, 整数型, 参考
+
+    
+
+.子程序 GetConnectionCount, 整数型, 公开, 获取客户端连接数
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetAllConnectionIDs, 逻辑型, 公开, 获取所有连接的 HP_CONNID
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 pIDs, 整数型, 参考 数组, 参数请用空数组
+
+    
+
+.子程序 GetConnectPeriod, 逻辑型, 公开, 获取某个客户端连接时长（毫秒）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 pdwPeriod, 整数型, 参考
+
+    
+
+.子程序 GetSilencePeriod, 逻辑型, 公开, 获取某个连接静默时间（毫秒）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 pdwPeriod, 整数型, 参考
+
+    
+
+.子程序 GetListenAddress, 逻辑型, 公开, 获取监听 Socket 的地址信息
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 lpszAddress, 文本型, 参考
+    .参数 pusPort, 整数型, 参考,  
+
+    
+
+.子程序 GetLocalAddress, 逻辑型, 公开, 获取某个连接的本地地址信息
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszAddress, 文本型, 参考
+    .参数 pusPort, 整数型, 参考,  
+
+    
+
+.子程序 GetRemoteAddress, 逻辑型, 公开, 获取某个连接的远程地址信息
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszAddress, 文本型, 参考
+    .参数 pusPort, 整数型, 参考,  
+
+    
+
+.子程序 SetSendPolicy, , 公开, 设置数据发送策略
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 enSendPolicy, 整数型
+
+    
+
+.子程序 SetOnSendSyncPolicy, , 公开, 设置 OnSend 事件同步策略（默认：#OSSP_NONE，不同步）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 enSyncPolicy, 整数型, , #OSSP_ 开头常量
+
+    
+
+.子程序 SetFreeSocketObjLockTime, , 公开, 设置 Socket 缓存对象锁定时间（毫秒，在锁定期间该 Socket 缓存对象不能被获取使用）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwFreeSocketObjLockTime, 整数型
+
+    
+
+.子程序 SetFreeSocketObjPool, , 公开, 设置 Socket 缓存池大小（通常设置为平均并发连接数量的 1/3 - 1/2）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwFreeSocketObjPool, 整数型
+
+    
+
+.子程序 SetFreeBufferObjPool, , 公开, 设置内存块缓存池大小（通常设置为 Socket 缓存池大小的 2 - 3 倍）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwFreeBufferObjPool, 整数型
+
+    
+
+.子程序 SetFreeSocketObjHold, , 公开, 设置 Socket 缓存池回收阀值（通常设置为 Socket 缓存池大小的 3 倍）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwFreeBufferObjPool, 整数型
+
+    
+
+.子程序 SetFreeBufferObjHold, , 公开, 设置内存块缓存池回收阀值（通常设置为内存块缓存池大小的 3 倍）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwFreeBufferObjHold, 整数型
+
+    
+
+.子程序 SetMaxConnectionCount, , 公开, 设置最大连接数（组件会根据设置值预分配内存，因此需要根据实际情况设置，不宜过大）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwMaxConnectionCount, 整数型
+
+    
+
+.子程序 SetWorkerThreadCount, , 公开, 设置工作线程数量（通常设置为 2 * CPU + 2）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwWorkerThreadCount, 整数型
+
+    
+
+.子程序 SetMarkSilence, , 公开, 设置是否标记静默时间（设置为 TRUE 时 DisconnectSilenceConnections() 和 GetSilencePeriod() 才有效，默认：TRUE）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 bMarkSilence, 逻辑型
+
+    
+
+.子程序 GetSendPolicy, 整数型, 公开, 获取数据发送策略
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetOnSendSyncPolicy, 整数型, 公开, 获取 OnSend 事件同步策略,返回#OSSP_ 开头常量
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetFreeSocketObjLockTime, 整数型, 公开, 获取 Socket 缓存对象锁定时间
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetFreeSocketObjPool, 整数型, 公开, 获取 Socket 缓存池大小
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetFreeBufferObjPool, 整数型, 公开, 获取内存块缓存池大小
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetFreeSocketObjHold, 整数型, 公开, 获取 Socket 缓存池回收阀值
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetFreeBufferObjHold, 整数型, 公开, 获取内存块缓存池回收阀值
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetMaxConnectionCount, 整数型, 公开, 获取最大连接数
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetWorkerThreadCount, 整数型, 公开, 获取工作线程数量
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 IsMarkSilence, 逻辑型, 公开, 检测是否标记静默时间
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 SetupSSLContext, 逻辑型, 公开, 名称：初始化通信组件 SSL 环境参数 描述：SSL 环境参数必须在 SSL 通信组件启动前完成初始化，否则启动失败,TRUE-- 成功,FALSE-- 失败，可通过 SYS_GetLastError() 获取失败原因,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 iVerifyMode, 整数型, , SSL 验证模式（参考 EnSSLVerifyMode）
+    .参数 lpszPemCertFile, 文本型, 可空, 证书文件
+    .参数 lpszPemKeyFile, 文本型, 可空, 私钥文件
+    .参数 lpszKeyPasswod, 文本型, 可空, 私钥密码（没有密码则为空）
+    .参数 lpszCAPemCertFileOrPath, 文本型, 可空, CA 证书文件或目录（单向验证或客户端可选）
+    .参数 fnServerNameCallback, 子程序指针, 可空, SNI 回调函数指针（可选）int (__HP_CALL *Fn_SNI_ServerNameCallback)(LPCTSTR lpszServerName, PVOID pContext)
+
+    
+
+.子程序 SetupSSLContextByMemory, 逻辑型, 公开, 名称：初始化通信组件 SSL 环境参数 描述：SSL 环境参数必须在 SSL 通信组件启动前完成初始化，否则启动失败,TRUE-- 成功,FALSE-- 失败，可通过 SYS_GetLastError() 获取失败原因,/
+    .参数 hServer, 整数型
+    .参数 iVerifyMode, 整数型, , SSL 验证模式（参考 EnSSLVerifyMode）
+    .参数 lpszPemCert, 文本型, 可空, 证书内容
+    .参数 lpszPemKey, 文本型, 可空, 私钥内容
+    .参数 lpszKeyPasswod, 文本型, 可空, 私钥密码（没有密码则为空）
+    .参数 lpszCAPemCert, 文本型, 可空, CA 证书内容（单向验证可选）
+    .参数 fnServerNameCallback, 子程序指针, 可空, SNI 回调函数指针（可选）int (__HP_CALL *Fn_SNI_ServerNameCallback)(LPCTSTR lpszServerName, PVOID pContext)
+
+    
+
+.子程序 AddSSLContext, 整数型, 公开, 名称：增加 SNI 主机证书 描述：SSL 服务端在 SetupSSLContext() 成功后可以调用本方法增加多个 SNI 主机证书,正数-- 成功，并返回 SNI 主机证书对应的索引，该索引用于在 SNI 回调函数中定位 SNI 主机,负数-- 失败，可通过 SYS_GetLastError() 获取失败原因,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 iVerifyMode, 整数型, , SSL 验证模式（参考 EnSSLVerifyMode）
+    .参数 lpszPemCertFile, 文本型, , 证书文件
+    .参数 lpszPemKeyFile, 文本型, , 私钥文件
+    .参数 lpszKeyPasswod, 文本型, , 私钥密码（没有密码则为空）
+    .参数 lpszCAPemCertFileOrPath, 文本型, , CA 证书文件或目录（单向验证可选）
+
+    
+
+.子程序 AddSSLContextByMemory, 整数型, 公开, 名称：增加 SNI 主机证书 描述：SSL 服务端在 SetupSSLContext() 成功后可以调用本方法增加多个 SNI 主机证书,正数-- 成功，并返回 SNI 主机证书对应的索引，该索引用于在 SNI 回调函数中定位 SNI 主机,负数-- 失败，可通过 SYS_GetLastError() 获取失败原因,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 iVerifyMode, 整数型, , SSL 验证模式（参考 EnSSLVerifyMode）
+    .参数 lpszPemCert, 文本型, , 证书内容
+    .参数 lpszPemKey, 文本型, , 私钥内容
+    .参数 lpszKeyPasswod, 文本型, , 私钥密码（没有密码则为空）
+    .参数 lpszCAPemCert, 文本型, , CA 证书内容（单向验证可选）
+
+    
+
+.子程序 BindSSLServerName, 逻辑型, 公开, 名称：绑定 SNI 主机域名 描述：SSL 服务端在 AddSSLContext() 成功后可以调用本方法绑定主机域名到 SNI 主机证书
+    .参数 hServer, 整数型
+    .参数 lpszDomainName, 文本型, , 主机域名
+    .参数 iContextIndex, 整数型, , SNI 主机证书对应的索引
+
+    
+
+.子程序 StartSSLHandShake, 逻辑型, 公开, 启动 SSL 握手，当通信组件设置为非自动握手时，需要调用本方法启动 SSL 握手
+    .参数 hServer, 整数型
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 SetSSLAutoHandShake, , 公开, 设置通信组件握手方式（默认：真，自动握手）
+    .参数 hServer, 整数型
+    .参数 bAutoHandShake, 逻辑型
+
+    
+
+.子程序 IsSSLAutoHandShake, 逻辑型, 公开, 获取通信组件握手方式
+    .参数 hServer, 整数型
+
+    
+
+.子程序 SetSSLCipherList, , 公开, 设置 SSL 加密算法列表
+    .参数 hServer, 整数型
+    .参数 lpszCipherList, 文本型
+
+    
+
+.子程序 GetSSLCipherList, 文本型, 公开, 获取 SSL 加密算法列表
+    .参数 hServer, 整数型
+
+    
+
+.子程序 GetSSLSessionInfo, 逻辑型, 公开, 名称：获取 SSL Session 信息 描述：获取指定类型的 SSL Session 信息（输出类型参考：#SSL_SSI_）
+    .参数 pServer, 整数型
+    .参数 dwConnID, 整数型
+    .参数 enInfo, 整数型, , 参考：#SSL_SSI_
+    .参数 lppInfo, 整数型, 参考
+
+    
+
+.子程序 IsPauseReceive, 逻辑型, 公开, 获取连接的数据接收状态
+    .参数 hServer, 整数型
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pbPaused, 逻辑型, 参考, 返回 真- 暂停, 假- 恢复
+
+    
+
+.子程序 IsConnected, 逻辑型, 公开, 检测是否有效连接
+    .参数 hServer, 整数型
+    .参数 dwConnID, 整数型, , 连接 ID
+
+    
+
+.子程序 PauseReceive, 逻辑型, 公开, 暂停/恢复某个连接的数据接收工作
+    .参数 hServer, 整数型
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pbPaused, 逻辑型, , 真- 暂停, 假- 恢复
+
+    
+
+.子程序 CleanupSSLContext, , 公开, 名称：清理通信组件 SSL 运行环境 描述：清理通信组件 SSL 运行环境，回收 SSL 相关内存,无,/当要重新设置通信组件 SSL 环境参数时，需要先调用本方法清理原先的环境参数
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 OnPrepareListen, 逻辑型, 公开, 【可选】绑定监听事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnPrepareListen(pSender 整数型,soListen 整数型)
+
+    
+
+.子程序 OnAccept, 逻辑型, 公开, 【可选】绑定接受事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnAccept(pSender 整数型,dwConnID 整数型,pClient 整数型)
+
+    
+
+.子程序 OnHandShake, 逻辑型, 公开, 【可选】绑定握手事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnHandShake(pSender 整数型,dwConnID 整数型)
+
+    
+
+.子程序 OnSend, 逻辑型, 公开, 【可选】绑定发送事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnSend(pSender 整数型,dwConnID 整数型,pData 整数型,iLength 整数型)
+
+    
+
+.子程序 OnReceive, 逻辑型, 公开, 【必须】绑定数据接收事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnReceive(pSender 整数型,dwConnID 整数型,pData 整数型,iLength 整数型)
+
+    
+
+.子程序 OnClose, 逻辑型, 公开, 【必须】绑定断开事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnClose(pSender 整数型,dwConnID 整数型,enOperation(#SO_ 开头常量) 整数型,iErrorCode 整数型)
+
+    
+
+.子程序 OnShutdown, 逻辑型, 公开, 【可选】绑定关闭事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnShutdown(pSender 整数型)
+
+    
+
+.子程序 CreateListener, 整数型, 公开, 创建 HttpServerListener 对象,只会创建一次
+    
+
+.子程序 DestroyListener, , 公开, 销毁 HttpServerListener 对象
+    
+
+.子程序 Create, 整数型, 公开, 创建 HP_HttpServer 或 HP_HttpsServer 对象，并创建 HttpServerListener 对象
+    .参数 SSL, 逻辑型, , 是否是SSL组件
+
+    
+
+.子程序 Destroy, , 公开, 销毁 HP_HttpServer 或 HP_HttpsServer 对象
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 SSL, 逻辑型, , 是否是SSL组件 
+
+    
+
+.子程序 SendResponse, 逻辑型, 公开, 名称：回复请求 描述：向客户端回复 HTTP 请求,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 usStatusCode, 短整数型, , HTTP 状态码
+    .参数 lpszDesc, 文本型, 可空, HTTP 状态描述,空为默认
+    .参数 lpHeaders, TNVPair, 参考 可空 数组, 回复请求头
+    .参数 pData, 字节集, 可空, 回复请求体 
+
+    
+
+.子程序 SendChunkData, 逻辑型, 公开, 名称：发送 Chunked 数据分片 描述：向对端发送 Chunked 数据分片
+    .参数 hServer, 整数型
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 pData, 整数型, , Chunked 数据分片
+    .参数 iLength, 整数型, , 数据分片长度（为 0 表示结束分片）
+    .参数 lpszExtensions, 整数型, 可空, 扩展属性（默认：nullptr）
+
+    
+
+.子程序 SendLocalFile, 逻辑型, 公开, 名称：发送本地文件 描述：向指定连接发送 4096 KB 以下的小文件,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 lpszFileName, 文本型, , 文件路径
+    .参数 usStatusCode, 短整数型, , HTTP 状态码
+    .参数 lpszDesc, 文本型, 可空, HTTP 状态描述
+    .参数 lpHeaders, TNVPair, 可空 数组, 回复请求头
+
+    
+
+.子程序 SendLocalFileEx, 逻辑型, 公开, 名称：发送本地文件 描述：向指定连接发送 理论最大0xFFFFFFFFFFFFFFFF 大小的文件，请不要在组件任意事件中使用本方法,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 lpszFileName, 文本型, , 文件路径
+    .参数 usStatusCode, 短整数型, , HTTP 状态码
+    .参数 lpszDesc, 文本型, 可空, HTTP 状态描述
+    .参数 lpHeaders, TNVPair, 参考 可空 数组, 回复请求头，请不要加 Content-Length 这个头
+    .参数 bforceEx, 逻辑型, 可空, 强制走大文件
+
+    
+
+.子程序 SendWSMessage, 逻辑型, 公开, 名称：发送 WebSocket 消息 描述：向对端端发送 WebSocket 消息,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+    .参数 bFinal, 逻辑型, , 是否结束帧
+    .参数 iReserved, 字节型, , RSV1/RSV2/RSV3 各 1 位
+    .参数 iOperationCode, 字节型, , 操作码：0x0 - 0xF
+    .参数 pData, 字节集, 可空, 消息体数据缓冲区
+    .参数 ullBodyLen, 长整数型, 可空, 消息总长度 
+
+    
+
+.子程序 Release, 逻辑型, 公开, 名称：释放连接 描述：把连接放入释放队列，等待某个时间（通过 SetReleaseDelay() 设置）关闭连接,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型, , 连接 ID
+
+    
+
+.子程序 SetReleaseDelay, , 公开, 设置连接释放延时（默认：3000 毫秒）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwReleaseDelay, 整数型
+
+    
+
+.子程序 GetReleaseDelay, 整数型, 公开, 获取连接释放延时
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 GetUrlFieldSet, 短整数型, 公开, 获取请求行 URL 域掩码（URL 域参考：EnHttpUrlField）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetUrlField, 文本型, 公开, 获取某个 URL 域值
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 enField, 整数型
+
+    
+
+.子程序 GetMethod, 文本型, 公开, 获取请求方法
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 SetLocalVersion, , 公开, 设置本地协议版本
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 usVersion, 整数型
+
+    
+
+.子程序 GetLocalVersion, 整数型, 公开, 获取本地协议版本
+    .参数 hServer, 整数型, , 服务句柄
+
+    
+
+.子程序 IsUpgrade, 逻辑型, 公开, 检查是否升级协议
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 IsKeepAlive, 逻辑型, 公开, 检查是否有 Keep-Alive 标识
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 StartHttp, 逻辑型, 公开, 启动 HTTP 通信,当通信组件设置为非自动启动 HTTP 通信时，需要调用本方法启动 HTTP 通信,TRUE-- 成功,FALSE-- 失败,/
+    .参数 hServer, 整数型
+    .参数 dwConnID, 整数型, , 连接ID
+
+    
+
+.子程序 SetHttpAutoStart, , 公开, 设置 HTTP 启动方式（默认：TRUE，自动启动）
+    .参数 hServer, 整数型
+    .参数 bAutoStart, 逻辑型
+
+    
+
+.子程序 IsHttpAutoStart, 逻辑型, 公开, 获取 HTTP 启动方式
+    .参数 hServer, 整数型
+
+    
+
+.子程序 GetVersion, 短整数型, 公开, 获取协议版本
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetHost, 文本型, 公开, 获取主机
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetContentLength, 长整数型, 公开, 获取内容长度
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetContentType, 文本型, 公开, 获取内容类型
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetContentEncoding, 文本型, 公开, 获取内容编码
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetTransferEncoding, 文本型, 公开, 获取传输编码
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetUpgradeType, 整数型, 公开, 获取协议升级类型
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+
+    
+
+.子程序 GetParseErrorCode, 短整数型, 公开, 获取解析错误代码
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszErrorDesc, 整数型, 参考
+
+    
+
+.子程序 GetHeader, 文本型, 公开, 获取某个请求头（单值）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszName, 文本型
+
+    
+
+.子程序 GetHeaders, 逻辑型, 公开, 获取某个请求头（多值）
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszName, 文本型
+    .参数 lpszValue, 文本型, 参考 数组
+
+    
+
+.子程序 GetAllHeaders, 逻辑型, 公开, 取得所有HTTP返回协议头
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpHeaders, TNVPair, 参考 数组
+
+    
+
+.子程序 GetAllHeaderNames, 逻辑型, 公开, 获取所有请求头名称
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszName, 文本型, 参考 数组
+
+    
+
+.子程序 GetCookie, 文本型, 公开, 获取 Cookie
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpszName, 文本型
+
+    
+
+.子程序 GetAllCookies, 逻辑型, 公开, 获取所有 Cookie
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpHeaders, TNVPair, 参考 数组
+
+    
+
+.子程序 GetWSMessageState, 逻辑型, 公开, 获取当前 WebSocket 消息状态，传入 nullptr 则不获取相应字段
+    .参数 hServer, 整数型, , 服务句柄
+    .参数 dwConnID, 整数型
+    .参数 lpbFinal, 逻辑型, 参考 可空
+    .参数 lpiReserved, 字节型, 参考 可空
+    .参数 lpiOperationCode, 字节型, 参考 可空
+    .参数 lpszMask, 整数型, 参考 可空, 指针到字节集，length=4
+    .参数 lpullBodyLen, 长整数型, 参考 可空
+    .参数 lpullBodyRemain, 长整数型, 参考 可空
+
+    
+
+.子程序 OnMessageBegin, 逻辑型, 公开, 【可选】绑定开始解析事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnMessageBegin(pSender 整数型,dwConnID 整数型)
+
+    
+
+.子程序 OnRequestLine, 逻辑型, 公开, 【可选】绑定请求行解析完成事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnRequestLine(pSender 整数型,dwConnID 整数型,lpszMethod 文本型,lpszUrl 文本型)
+
+    
+
+.子程序 OnHeader, 逻辑型, 公开, 【可选】绑定请求头事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnHeader(pSender 整数型,dwConnID 整数型,lpszName 文本型,lpszValue 文本型)
+
+    
+
+.子程序 OnHeadersComplete, 逻辑型, 公开, 【必须】绑定请求头完成事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnHeadersComplete(pSender 整数型,dwConnID 整数型)
+
+    
+
+.子程序 OnBody, 逻辑型, 公开, : 【必须】绑定请求体报文事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnBody(pSender 整数型,dwConnID 整数型,pData 整数型,iLength 整数型)
+
+    
+
+.子程序 OnChunkHeader, 逻辑型, 公开, 【可选】绑定Chunked 报文头事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnChunkHeader(pSender 整数型,dwConnID 整数型,iLength 整数型)
+
+    
+
+.子程序 OnChunkComplete, 逻辑型, 公开, 【可选】绑定Chunked 报文完成事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnChunkComplete(pSender 整数型,dwConnID 整数型)
+
+    
+
+.子程序 OnMessageComplete, 逻辑型, 公开, 【必须】绑定完成解析事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnMessageComplete(pSender 整数型,dwConnID 整数型)
+
+    
+
+.子程序 OnUpgrade, 逻辑型, 公开, 【可选】绑定升级协议事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnUpgrade(pSender 整数型,dwConnID 整数型,enUpgradeType(#HUT_ 开头常量) 整数型)
+
+    
+
+.子程序 OnParseError, 逻辑型, 公开, 【必须】绑定解析错误事件
+    .参数 fn, 子程序指针, , 返回 #HPR_ 开头常量 OnParseError(pSender 整数型,dwConnID 整数型,iErrorCode 整数型,lpszErrorDesc 文本型)
+
+    
+
+.子程序 OnWSMessageHeader, 逻辑型, 公开, 【可选】绑定WebSocket 数据包头事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnWSMessageHeader(pSender 整数型,dwConnID 整数型,bFinal 逻辑型,iReserved 字节型,iOperationCode 字节型,lpszMask(4数组) 字节型,ullBodyLen 长整数型)
+
+    
+
+.子程序 OnWSMessageBody, 逻辑型, 公开, 【可选】绑定WebSocket 数据包体事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnWSMessageBody(pSender 整数型,dwConnID 整数型,pData 整数型,iLength 整数型)
+
+    
+
+.子程序 OnWSMessageComplete, 逻辑型, 公开, 【可选】绑定WebSocket 数据包完成事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnWSMessageComplete(pSender 整数型,dwConnID 整数型)
+
+    
+

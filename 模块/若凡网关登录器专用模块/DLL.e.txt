@@ -1,0 +1,553 @@
+﻿.版本 2
+
+.DLL命令 Sleep, 整数型, "kernel32.dll", "Sleep", 公开, 延时
+    .参数 毫秒, 整数型
+
+.DLL命令 RtlGetProductInfo, 整数型, "ntdll.dll", "RtlGetProductInfo", 公开, 系统_取系统版本
+    .参数 dwOSMajorVersion, 整数型
+    .参数 dwOSMinorVersion, 整数型
+    .参数 dwSpMajorVersion, 整数型
+    .参数 dwSpMinorVersion, 整数型
+    .参数 pdwReturnedProductType, 整数型, 传址
+
+.DLL命令 CryptReleaseContext, 整数型, "advapi32.dll", "CryptReleaseContext", 公开
+    .参数 hProv, 整数型
+    .参数 dwFlags, 整数型
+
+.DLL命令 CryptGetHashParam, 整数型, "advapi32.dll", "CryptGetHashParam", 公开
+    .参数 hHash, 整数型
+    .参数 dwParam, 整数型
+    .参数 pByte, 字节集
+    .参数 pdwDataLen, 整数型, 传址
+    .参数 dwFlags, 整数型
+
+.DLL命令 CryptHashData, 整数型, "advapi32.dll", "CryptHashData", 公开
+    .参数 hHash, 整数型
+    .参数 pbData, 字节集, 传址
+    .参数 dwDataLen, 整数型
+    .参数 dwFlags, 整数型
+
+.DLL命令 HttpQueryInfoA, 逻辑型, "wininet.dll", "HttpQueryInfoA", 公开, HTTP查询信息
+    .参数 Internet请求句柄, 整数型
+    .参数 待查信息, 整数型, , 22返回所有信息;43SET_COOKIE;+2147483648返回文本
+    .参数 返回容器, 文本型, 传址
+    .参数 返回容器长度, 整数型, 传址
+    .参数 lpdwIndex, 整数型
+
+.DLL命令 InternetReadFile, 逻辑型, "wininet.dll", "InternetReadFile", 公开, Internet读文件
+    .参数 HTTP请求句柄, 整数型
+    .参数 sBuffer, 字节集, 传址
+    .参数 lNumBytesToRead, 整数型
+    .参数 lNumberOfBytesRead, 整数型, 传址
+
+.DLL命令 HttpSendRequestA, 逻辑型, "wininet.dll", "HttpSendRequestA", 公开, Http发送请求
+    .参数 HTTP请求句柄, 整数型
+    .参数 附加协议头, 文本型
+    .参数 附加协议头长度, 整数型
+    .参数 提交信息, 整数型
+    .参数 提交信息长度, 整数型
+
+.DLL命令 InternetSetOption, 逻辑型, "Wininet.dll", "InternetSetOptionA", 公开, 设置选项
+    .参数 hInternet, 整数型, , 句柄
+    .参数 dwOption, 整数型, , 选项值
+    .参数 lpBuffer, 整数型, 传址, 缓冲区
+    .参数 dwBufferLength, 整数型, , 缓冲区长度
+
+.DLL命令 HttpOpenRequestA, 整数型, "wininet.dll", "HttpOpenRequestA", 公开, Http创建请求
+    .参数 Internet连接句柄, 整数型, , 由Internet建立连接返回
+    .参数 访问方式, 文本型, 传址, "GET" or "POST"为空默认GET
+    .参数 页面路径, 文本型, 传址, 简短路径,不带域名
+    .参数 协议版本, 文本型, 传址, 为空默认HTTP/1.1
+    .参数 引用页, 文本型, 传址, 可为空
+    .参数 识别类型, 文本型, 传址, 可为空
+    .参数 dwFlags, 整数型, , 2147483648更新下载
+    .参数 dwContext, 整数型, , 0
+
+.DLL命令 InternetCloseHandle, 逻辑型, "wininet.dll", "InternetCloseHandle", 公开, Internet关闭句柄
+    .参数 句柄, 整数型
+
+.DLL命令 InternetConnectA, 整数型, "wininet.dll", "InternetConnectA", 公开, Internet建立连接
+    .参数 Internet句柄, 整数型
+    .参数 域名, 文本型, 传址
+    .参数 服务器端口, 整数型, , 80HTTP;21FTP;
+    .参数 用户名, 文本型, 传址, 空
+    .参数 用户口令, 文本型, 传址, 空
+    .参数 服务类型, 整数型, , 1FTP;3HTTP
+    .参数 dwFlags, 整数型, , 0http;134217728被动FTP模式
+    .参数 dwContext, 整数型, , 0
+
+.DLL命令 InternetOpenA, 整数型, "wininet.dll", "InternetOpenA", 公开, Internet激活
+    .参数 句柄名称, 文本型, 传址
+    .参数 连接类型, 整数型, , 1直接连接;3代理连接
+    .参数 代理地址, 文本型, 传址
+    .参数 代理掩码, 文本型, 传址
+    .参数 dwFlags, 整数型, , 0
+
+.DLL命令 WaitForSingleObject, 整数型, "kernel32.dll", "WaitForSingleObject", 公开, 线程等待
+    .参数 hHandle, 整数型, , 线程句柄
+    .参数 dwMilliseconds, 整数型, , 值为:4294967295
+
+.DLL命令 WideCharToMultiByte, 整数型, "kernel32.dll", "WideCharToMultiByte", 公开
+    .参数 CodePage, 整数型
+    .参数 dwFlags, 整数型
+    .参数 lpWideCharStr, 整数型
+    .参数 cchWideChar, 整数型
+    .参数 lpMultiByteStr, 整数型
+    .参数 cbMultiByte, 整数型
+    .参数 lpDefaultChar, 整数型
+    .参数 lpUsedDefaultChar, 整数型
+
+.DLL命令 WinHttpQueryHeaders, 逻辑型, "Winhttp.dll", "WinHttpQueryHeaders", 公开, BOOL WINAPI WinHttpQueryHeaders
+    .参数 hRequest, 整数型, , __in      HINTERNET hRequest
+    .参数 dwInfoLevel, 整数型, , __in      DWORD dwInfoLevel
+    .参数 pwszName, 整数型, , __in_opt  LPCWSTR pwszName
+    .参数 lpBuffer, 字节集, , __out     LPVOID lpBuffer
+    .参数 lpdwBufferLength, 整数型, 传址, __inout   LPDWORD lpdwBufferLength
+    .参数 lpdwIndex, 整数型, 传址, __inout   LPDWORD lpdwIndex
+
+.DLL命令 WinHttpReadData, 逻辑型, "Winhttp.dll", "WinHttpReadData", 公开, BOOL WINAPI WinHttpReadData
+    .参数 hRequest, 整数型, , __in   HINTERNET hRequest
+    .参数 lpBuffer, 字节集, , __out  LPVOID lpBuffer
+    .参数 dwNumberOfBytesToRead, 整数型, , __in   DWORD dwNumberOfBytesToRead
+    .参数 lpdwNumberOfBytesRead, 整数型, 传址, __out  LPDWORD lpdwNumberOfBytesRead
+
+.DLL命令 WinHttpQueryDataAvailable, 逻辑型, "Winhttp.dll", "WinHttpQueryDataAvailable", 公开, 查询是否有可读数据
+    .参数 hRequest, 整数型, , 请求句柄
+    .参数 lpdwNumberOfBytesAvailable, 整数型, 传址, 可读数据长度
+
+.DLL命令 WinHttpReceiveResponse, 逻辑型, "Winhttp.dll", "WinHttpReceiveResponse", 公开, BOOL WINAPI WinHttpReceiveResponse
+    .参数 hRequest, 整数型, , __in        HINTERNET hRequest
+    .参数 lpReserved, 整数型, , __reserved  LPVOID lpReserved
+
+.DLL命令 WinHttpSendRequest, 逻辑型, "Winhttp.dll", "WinHttpSendRequest", 公开, BOOL WINAPI WinHttpSendRequest
+    .参数 hRequest, 整数型, , __in      HINTERNET hRequest
+    .参数 pwszHeaders, 整数型, , __in_opt  LPCWSTR pwszHeaders
+    .参数 dwHeadersLength, 整数型, , __in      DWORD dwHeadersLength
+    .参数 lpOptional, 字节集, , __in_opt  LPVOID lpOptional
+    .参数 dwOptionalLength, 整数型, , __in      DWORD dwOptionalLength
+    .参数 dwTotalLength, 整数型, , __in      DWORD dwTotalLength
+    .参数 dwContext, 整数型, , __in      DWORD_PTR dwContext
+
+.DLL命令 WinHttpAddRequestHeaders, 逻辑型, "Winhttp.dll", "WinHttpAddRequestHeaders", 公开, BOOL WINAPI WinHttpAddRequestHeaders
+    .参数 hRequest, 整数型, , __in  HINTERNET hRequest
+    .参数 pwszHeaders, 字节集, , __in  LPCWSTR pwszHeaders
+    .参数 dwHeadersLength, 整数型, , __in  DWORD dwHeadersLength
+    .参数 dwModifiers, 整数型, , __in  DWORD dwModifiers
+
+.DLL命令 WinHttpCloseHandle, 逻辑型, "Winhttp.dll", "WinHttpCloseHandle", 公开, BOOL WINAPI WinHttpCloseHandle
+    .参数 hInternet, 整数型, , __in  HINTERNET hInternet
+
+.DLL命令 WinHttpSetOption, 逻辑型, "Winhttp.dll", "WinHttpSetOption", 公开, BOOL WINAPI WinHttpSetOption
+    .参数 hInternet, 整数型, , __in  HINTERNET hInternet
+    .参数 dwOption, 整数型, , __in  DWORD dwOption
+    .参数 lpBuffer, 整数型, 传址, __in  LPVOID lpBuffer
+    .参数 dwBufferLength, 整数型, , __in  DWORD dwBufferLength
+
+.DLL命令 WinHttpOpenRequest, 整数型, "Winhttp.dll", "WinHttpOpenRequest", 公开, HINTERNET WINAPI WinHttpOpenRequest
+    .参数 hConnect, 整数型, , __in  HINTERNET hConnect
+    .参数 pwszVerb, 字节集, , __in  LPCWSTR pwszVerb
+    .参数 pwszObjectName, 字节集, , __in  LPCWSTR pwszObjectName
+    .参数 pwszVersion, 整数型, , __in  LPCWSTR pwszVersion
+    .参数 pwszReferrer, 整数型, , __in  LPCWSTR pwszReferrer
+    .参数 ppwszAcceptTypes, 整数型, , __in  LPCWSTR *ppwszAcceptTypes
+    .参数 dwFlags, 整数型, , __in  DWORD dwFlags
+
+.DLL命令 WinHttpConnect, 整数型, "Winhttp.dll", "WinHttpConnect", 公开, HINTERNET WINAPI WinHttpConnect
+    .参数 hSession, 整数型, , __in        HINTERNET hSession
+    .参数 pswzServerName, 字节集, , __in        LPCWSTR pswzServerName
+    .参数 nServerPort, 整数型, , __in        INTERNET_PORT nServerPort
+    .参数 dwReserved, 整数型, , __reserved  DWORD dwReserved
+
+.DLL命令 WinHttpSetTimeouts, 逻辑型, "Winhttp.dll", "WinHttpSetTimeouts", 公开, BOOL WINAPI WinHttpSetTimeouts
+    .参数 hInternet, 整数型, , __in  HINTERNET hInternet
+    .参数 dwResolveTimeout, 整数型, , __in  int dwResolveTimeout
+    .参数 dwConnectTimeout, 整数型, , __in  int dwConnectTimeout
+    .参数 dwSendTimeout, 整数型, , __in  int dwSendTimeout
+    .参数 dwReceiveTimeout, 整数型, , __in  int dwReceiveTimeout
+
+.DLL命令 WinHttpOpen, 整数型, "Winhttp.dll", "WinHttpOpen", 公开, HINTERNET WINAPI WinHttpOpen
+    .参数 pwszUserAgent, 整数型, , __in_opt  LPCWSTR pwszUserAgent
+    .参数 dwAccessType, 整数型, , __in      DWORD dwAccessType
+    .参数 pwszProxyName, 字节集, , __in      LPCWSTR pwszProxyName
+    .参数 pwszProxyBypass, 整数型, , __in      LPCWSTR pwszProxyBypass
+    .参数 dwFlags, 整数型, , __in      DWORD dwFlags
+
+.DLL命令 WinHttpCrackUrl, 逻辑型, "Winhttp.dll", "WinHttpCrackUrl", 公开
+    .参数 pwszUrl, 字节集
+    .参数 dwUrlLength, 整数型
+    .参数 dwFlags, 整数型
+    .参数 lpUrlComponents, URL_COMPONENTS
+
+.DLL命令 WinHttpCheckPlatform, 逻辑型, "Winhttp.dll", "WinHttpCheckPlatform", 公开, BOOL WinHttpCheckPlatform(void);
+
+.DLL命令 Process32Next, 整数型, "kernel32.dll", "Process32Next", 公开, 取下一个进程
+    .参数 h, 整数型
+    .参数 p, 精易_进程信息列表
+
+.DLL命令 Process32First, 整数型, "kernel32.dll", "Process32First", 公开, 取第一个进程
+    .参数 hSnapshot, 整数型
+    .参数 lppe, 精易_进程信息列表
+
+.DLL命令 TerminateProcess, 整数型, "kernel32.dll", "TerminateProcess", 公开, _进程终止
+    .参数 hProcess, 整数型, , PID
+    .参数 uExitCode, 整数型
+
+.DLL命令 CoUninitialize, , "ole32.dll", "CoUninitialize", 公开, 卸载COM
+
+.DLL命令 CoInitialize, , "ole32.dll", "CoInitialize", 公开, 加载COM
+    .参数 pvReserved, 整数型, , 值为0
+
+.DLL命令 ShellExecuteEx, 整数型, "shell32.dll", "ShellExecuteEx", 公开, 　
+    .参数 lpExecInfo, <?未知本地类型?>
+
+.DLL命令 LocalSize_SHELLEXECUTEINFOA, 整数型, "kernel32.dll", "LocalSize", 公开, 返回本地内存块大小　
+    .参数 hMem, <?未知本地类型?>
+
+.DLL命令 CreateThread, 整数型, "kernel32.dll", "CreateThread", 公开, 线程_启动
+    .参数 lpThreadAttributes, 整数型
+    .参数 dwStackSize, 整数型
+    .参数 lpStartAddress, 整数型
+    .参数 lpParameter, 整数型
+    .参数 dwCreationFlags, 整数型, , 控制线程创建的标志。如果指定了CREATE_SUSPENDED标志，是创建线程处于暂停状态，并不会运行，直到ResumeThread函数被调用。如果这个值是零，线程创建后立即运行
+    .参数 lpThreadId, 整数型
+
+.DLL命令 AdjustTokenPrivileges, 逻辑型, "advapi32.dll", "AdjustTokenPrivileges", 公开, 使能/取消令牌特权 _进程置权限
+    .参数 令牌句柄, 整数型
+    .参数 DisableAllPrivileges, 逻辑型
+    .参数 NewState, <?未知本地类型?>, 传址
+    .参数 BufferLength, 整数型
+    .参数 PreviousState, 整数型
+    .参数 ReturnLength, 整数型
+
+.DLL命令 OpenProcessToken, 整数型, "advapi32.dll", "OpenProcessToken", 公开, 打开过程令牌对象OpenProcessToken
+    .参数 ProcessHandle, 整数型, , 进程句柄
+    .参数 DesiredAccess, 整数型, , 权限
+    .参数 TokenHandle, 整数型, 传址, 令牌句柄
+
+.DLL命令 GetCurrentProcessId, 整数型, "kernel32.dll", "GetCurrentProcessId", 公开, 取自进程ID
+
+.DLL命令 GetExitCodeThread, 整数型, "kernel32.dll", "GetExitCodeThread", 公开, _取中止线程退出代码
+    .参数 线程句柄, 整数型
+    .参数 退出代码, 整数型, 传址
+
+.DLL命令 OpenProcess, 整数型, "kernel32.dll", "OpenProcess", 公开, 打开进程
+    .参数 进程对象, 整数型
+    .参数 继承句柄, 整数型
+    .参数 进程标识符, 整数型
+
+.DLL命令 SuspendThread, 整数型, "kernel32.dll", "SuspendThread", 公开, 线程_挂起  将指定线程的执行挂起，调用这个函数前的挂起计数。&HFFFFFFFF表示出错。会设置GetLastError
+    .参数 hThread, 整数型
+
+.DLL命令 OpenThread, 整数型, "kernel32.dll", "OpenThread", 公开, 打开线程
+    .参数 dwDesiredAccess, 整数型, , 2032639
+    .参数 bInheritHandle, 整数型, , 0
+    .参数 线程ID, 整数型, , 线程ID
+
+.DLL命令 Thread32Next, 逻辑型, "Kernel32.dll", "Thread32Next", 公开, _线程取第一个
+    .参数 快照句柄, 整数型
+    .参数 线程入口结构, <?未知本地类型?>
+
+.DLL命令 Thread32First, 逻辑型, "KERNEL32.DLL", "Thread32First", 公开
+    .参数 hSnapshot, 整数型
+    .参数 lpte, <?未知本地类型?>
+
+.DLL命令 ShellExecuteA, 整数型, "shell32.dll", "ShellExecuteA", 公开, 文件_执行
+    .参数 hwnd, 整数型, , 指定一个窗口的句柄，有些时候，Windows程序有必要在创建自己的主窗口前显示一个消息框。
+    .参数 lpOperation, 文本型, , 指定字串“Open”来打开lpFlie文档；或指定“Print”来打印它。也可设为vbNullString，表示默认为“Open”
+    .参数 lpFile, 文本型, , 想用关联的程序打印或打开的一个程序名或文件名
+    .参数 lpParameters, 文本型, , 如lpFile是一个可执行文件，则这个字串包含了传递给执行程序的参数。如lpFile引用的是一个文档文件，或者不需要使用参数，则设为vbNullString
+    .参数 lpDirectory, 文本型, , 想使用的默认路径完整路径
+    .参数 nShowCmd, 整数型, , 定义了如何显示启动程序的常数值。参考ShowWindow函数的nCmdShow参数
+
+.DLL命令 CreateToolhelp32Snapshot, 整数型, "kernel32.dll", "CreateToolhelp32Snapshot", 公开, 创建进程快照
+    .参数 falg, 整数型
+    .参数 id, 整数型
+
+.DLL命令 GetModuleHandleA, 整数型, "kernel32.dll", "GetModuleHandleA", 公开, 取模块句柄
+    .参数 lpModuleName, 文本型
+
+.DLL命令 GetProcAddress, 整数型, "kernel32.dll", "GetProcAddress", 公开, 取动态链接库函数入口地址
+    .参数 模块句柄, 整数型, , 通过LoadLibraryA命令取得
+    .参数 接口名称, 文本型
+
+.DLL命令 GetProcAddress1, 整数型, "kernel32.dll", "GetProcAddress", 公开
+    .参数 hModule, 整数型
+    .参数 lpProcName, 文本型
+
+.DLL命令 LocalFree, 整数型, "kernel32.dll", "LocalFree", 公开, _释放本地内存信息
+    .参数 hMem, 整数型
+
+.DLL命令 LocalAlloc, 整数型, "kernel32.dll", "LocalAlloc", 公开, _从局部堆分配内存(申请内存)
+    .参数 uFlags, 整数型
+    .参数 uBytes, 整数型
+
+.DLL命令 RtlMoveMemory_整数传址1, 整数型, "kernel32.dll", "RtlMoveMemory", 公开, 常规API,从地址读一个整数
+    .参数 dest, 整数型, 传址
+    .参数 Source, 整数型
+    .参数 len, 整数型, , 4
+
+.DLL命令 lstrcpyn_字节集, 整数型, "kernel32.dll", "lstrcpyn", 公开, 字节集
+    .参数 欲取其指针, 字节集, 传址
+    .参数 欲取其指针, 字节集, 传址
+    .参数 保留, 整数型, , 0
+
+.DLL命令 GetInputState, 整数型, "user32.dll", "GetInputState", 公开, 用法,如果真(我的处理事件()≠0),处理事件()    比系统自带的"处理事件"比3倍以上
+
+.DLL命令 CopyMemory_sockaddr, 整数型, , "RtlMoveMemory", 公开
+    .参数 dest, <?未知本地类型?>
+    .参数 src, 通用型
+    .参数 len, 整数型
+
+.DLL命令 CopyMemory, , "kernel32", "RtlMoveMemory", 公开
+    .参数 pDest, 整数型
+    .参数 pSrc, 整数型
+    .参数 ByteLen, 整数型
+
+.DLL命令 GetModuleInformation, 整数型, "psapi.dll", "GetModuleInformation", 公开
+    .参数 hProcess, 整数型
+    .参数 hModule, 整数型
+    .参数 lpmodinfo, <?未知本地类型?>
+    .参数 cb, 整数型
+
+.DLL命令 OutputDebugString, , "kernel32", "OutputDebugStringA", 公开, 向调试发送字符串
+    .参数 lpOutputString, 文本型
+
+.DLL命令 MultiByteToWideChar, 整数型, "Kernel32.dll", "MultiByteToWideChar", 公开, 该函数映射一个字符串到一个宽字符（unicode）的字符
+    .参数 CodePage, 整数型
+    .参数 dwFlags, 整数型
+    .参数 lpMultiByteStr, 整数型
+    .参数 cchMultiByte, 整数型
+    .参数 lpWideCharStr, 整数型
+    .参数 cchWideChar, 整数型
+
+.DLL命令 GetVersionEx, 逻辑型, "kernel32.dll", "GetVersionExA", 公开, 在一个OSVERSIONINFO结构中载入与平台和操作系统有关的版本信息  非零表示成功，零表示失败
+    .参数 版本, OSVERSIONINFOEX, , OSVERSIONINFO，用于装载版本信息的结构。在正式调用函数之前，必须先将这个结构的dwOSVersionInfoSize字段设为结构的大小（148）;
+
+.DLL命令 _回调钩子, 整数型, , "CallWindowProcA", 公开
+    .参数 窗口程序程序指针, 子程序指针
+    .参数 窗口句柄, 整数型
+    .参数 消息, 整数型
+    .参数 参数1, 整数型
+    .参数 参数2, 整数型
+
+.DLL命令 _判断按键状态, 整数型, , "GetAsyncKeyState", 公开, 判断函数调用时指定虚拟键的状态 (非按住状态返回0) 
+    .参数 键代码, 整数型, , 欲测试的虚拟键的键码
+
+.DLL命令 CloseHandle, 逻辑型, "kernel32.dll", "CloseHandle", 公开, 关闭一个内核对象。其中包括文件、文件映射、进程、线程、安全和同步对象等。涉及文件处理时，这个函数通常与vb的close命令相似。应尽可能的使用close，因为它支持vb的差错控制。注意这个函数使用的文件句柄与vb的文件编号是完全不同的  非零表示成功，零表示失败。会设置GetLastError
+    .参数 对象句柄, 整数型, , 欲关闭的一个对象的句柄;
+
+.DLL命令 MsgWaitForMultipleObjects, 整数型, "User32.dll", "MsgWaitForMultipleObjects", 公开
+    .参数 nCount, 整数型
+    .参数 pHandles, 整数型, 传址
+    .参数 fWaitAll, 逻辑型
+    .参数 dwMilliseconds, 整数型
+    .参数 dwWakeMask, 整数型
+
+.DLL命令 SetWaitableTimer, 整数型, "kernel32.dll", "SetWaitableTimer", 公开
+    .参数 hTimer, 整数型
+    .参数 pDueTime, <?未知本地类型?>
+    .参数 lPeriod, 整数型
+    .参数 pfnCompletionRoutine, 整数型
+    .参数 lpArgToCompletionRoutine, 整数型
+    .参数 fResume, 逻辑型
+
+.DLL命令 CreateWaitableTimerA, 整数型, "kernel32.dll", "CreateWaitableTimerA", 公开, 程序延时
+    .参数 lpTimerAttributes, 整数型
+    .参数 bManualReset, 逻辑型
+    .参数 lpTimerName, 整数型
+
+.DLL命令 _内存读字节集, 整数型, , "ReadProcessMemory", 公开
+    .参数 hProcess, 整数型
+    .参数 lpBaseAddress, 整数型
+    .参数 lpBuffer, 字节集, 传址
+    .参数 nSize, 整数型
+    .参数 lpNumberOfBytesWritten, 整数型
+
+.DLL命令 _内存写字节集, 整数型, , "WriteProcessMemory", 公开, kernel32.dll
+    .参数 hProcess, 整数型
+    .参数 pBaseAddress, 整数型, , 内存地址
+    .参数 lpBuffer, 字节集, 传址, 数据指针
+    .参数 nSize, 整数型, , 长度
+    .参数 lpNumberOfBytesWritten, 整数型, , 实际写出长度
+
+.DLL命令 _关闭对象, 整数型, , "CloseHandle", 公开, kernel32.dll
+    .参数 对象句柄, 整数型
+
+.DLL命令 GetSystemMetrics, 整数型, "User32.dll", "GetSystemMetrics", 公开, 获取windows环境信息
+    .参数 nIndex, 整数型
+
+.DLL命令 RtlGetNtVersionNumbers, 整数型, "ntdll.dll", "RtlGetNtVersionNumbers", 公开, 系统_取系统版本
+    .参数 major, 整数型, 传址
+    .参数 minor, 整数型, 传址
+    .参数 build, 短整数型, 传址
+
+.DLL命令 IsWow64Process, 逻辑型, "kernel32.dll", "IsWow64Process", 公开
+    .参数 hProcess, 整数型
+    .参数 Wow64Process, 逻辑型, 传址
+
+.DLL命令 VirtualAlloc, 整数型, "kernel32.dll", "VirtualAlloc", 公开
+    .参数 lpAddress, 整数型
+    .参数 dwSize, 整数型
+    .参数 flAllocationType, 整数型
+    .参数 flProtect, 整数型
+
+.DLL命令 VirtualFree, 逻辑型, "kernel32.dll", "VirtualFree", 公开
+    .参数 lpAddress, 整数型
+    .参数 dwSize, 整数型
+    .参数 dwFreeType, 整数型
+
+.DLL命令 GetCurrentProcess, 整数型, "Kernel32.dll", "GetCurrentProcess", 公开
+
+.DLL命令 GetModuleHandleW, 整数型, "kernel32.dll", "GetModuleHandleW", 公开
+    .参数 lpModuleName, 字节集, 传址
+
+.DLL命令 CreateWindowExW, 整数型, "user32.dll", "CreateWindowExW", 公开
+    .参数 dwExStyle, 整数型
+    .参数 lpClassName, 字节集, 传址
+    .参数 lpWindowName, 字节集, 传址
+    .参数 dwStyle, 整数型
+    .参数 X, 整数型
+    .参数 Y, 整数型
+    .参数 nWidth, 整数型
+    .参数 nHeight, 整数型
+    .参数 hWndParent, 整数型
+    .参数 hMenu, 整数型
+    .参数 hInstance, 整数型
+    .参数 lpParam, 整数型, 传址
+
+.DLL命令 SendMessageW, 整数型, "user32.dll", "SendMessageW", 公开
+    .参数 hwnd, 整数型
+    .参数 msg, 整数型
+    .参数 wParam, 整数型
+    .参数 lParam, 整数型
+
+.DLL命令 ShowWindow, 逻辑型, "user32.dll", "ShowWindow", 公开
+    .参数 hWnd, 整数型
+    .参数 nCmdShow, 整数型
+
+.DLL命令 IsWindowVisible, 逻辑型, "user32.dll", "IsWindowVisible", 公开
+    .参数 hwnd, 整数型, , ;
+
+.DLL命令 SystemParametersInfo, 逻辑型, "user32.dll", "SystemParametersInfoA", 公开
+    .参数 uAction, 整数型
+    .参数 uParam, 整数型
+    .参数 lpvParam, 整数型
+    .参数 fuWinIni, 整数型
+
+.DLL命令 LoadCursorW, 整数型, "user32.dll", "LoadCursorW", 公开
+    .参数 hlnstance, 整数型
+    .参数 lpCursorName, 整数型
+
+.DLL命令 _DLL命令10A7B_MultiByteToWideChar, 整数型, "Kernel32.dll", "MultiByteToWideChar", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+    .参数 _参数3, 文本型
+    .参数 _参数4, 整数型
+    .参数 _参数5, 字节集
+    .参数 _参数6, 整数型
+
+.DLL命令 _DLL命令1BDC4_GetClassNameW, 整数型, "user32.dll", "GetClassNameW", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+    .参数 _参数3, 整数型
+
+.DLL命令 _DLL命令1D7C2_IsBadReadPtr, 整数型, "kernel32", "IsBadReadPtr", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+
+.DLL命令 WideCharToMultiByte3, 整数型, "kernel32.dll", "WideCharToMultiByte", 公开
+    .参数 代码页, 整数型
+    .参数 标志, 整数型
+    .参数 宽字符文本指针, 整数型
+    .参数 宽字符文本长度, 整数型
+    .参数 双字节文本, 文本型
+    .参数 双字节文本长度, 整数型
+    .参数 默认文本, 整数型
+    .参数 使用默认文本, 整数型
+
+.DLL命令 _DLL命令10A9A_GdiplusStartup, 整数型, "gdiplus.dll", "GdiplusStartup", 公开
+    .参数 _参数1, 整数型, 传址
+    .参数 _参数2, 字节集, 传址
+    .参数 _参数3, 整数型
+
+.DLL命令 GetProcessHeap, 整数型, "kernel32.dll", "GetProcessHeap", 公开
+
+.DLL命令 _DLL命令21790_InitAtomTable, 整数型, "kernel32", "InitAtomTable", 公开
+    .参数 _参数1, 整数型
+
+.DLL命令 GdipCreateImageAttributes, 整数型, "gdiplus.dll", "GdipCreateImageAttributes", 公开
+    .参数 imageattr, 整数型, 传址
+
+.DLL命令 _DLL命令10AF8_LoadResource, 整数型, "kernel32.dll", "LoadResource", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+
+.DLL命令 _DLL命令16E52_LookupIconIdFromDirectoryEx, 整数型, "user32.dll", "LookupIconIdFromDirectoryEx", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 逻辑型
+    .参数 _参数3, 整数型
+    .参数 _参数4, 整数型
+    .参数 _参数5, 整数型
+
+.DLL命令 _DLL命令10AFB_CreateIconFromResourceEx, 整数型, "user32.dll", "CreateIconFromResourceEx", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+    .参数 _参数3, 逻辑型
+    .参数 _参数4, 整数型
+    .参数 _参数5, 整数型
+    .参数 _参数6, 整数型
+    .参数 _参数7, 整数型
+
+.DLL命令 _DLL命令10AF7_SizeofResource, 整数型, "kernel32.dll", "SizeofResource", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+
+.DLL命令 _DLL命令10AF9_FreeResource, 逻辑型, "kernel32.dll", "FreeResource", 公开
+    .参数 _参数1, 整数型
+
+.DLL命令 _DLL命令10AD3_RegisterClassExW, 整数型, "user32.dll", "RegisterClassExW", 公开
+    .参数 _参数1, <?未知本地类型?>
+
+.DLL命令 GdipCreateFontFamilyFromName, 整数型, "GdiPlus.dll", "GdipCreateFontFamilyFromName", 公开
+    .参数 Name, 字节集
+    .参数 FontCollection, 整数型
+    .参数 FontFamily, 整数型, 传址
+
+.DLL命令 GdipDeleteFontFamily, 整数型, "GdiPlus.dll", "GdipDeleteFontFamily", 公开
+    .参数 FontFamily, 整数型
+
+.DLL命令 GdipCreateFont, 整数型, "GdiPlus.dll", "GdipCreateFont", 公开
+    .参数 fontFamily, 整数型
+    .参数 emSize, 小数型
+    .参数 style, 整数型
+    .参数 unit, 整数型
+    .参数 font, 整数型, 传址
+
+.DLL命令 DefWindowProcW, 整数型, "user32.dll", "DefWindowProcW", 公开
+    .参数 hwnd, 整数型
+    .参数 wMsg, 整数型
+    .参数 wParam, 整数型
+    .参数 lParam, 整数型
+
+.DLL命令 GdipDeleteFont, 整数型, "GdiPlus.dll", "GdipDeleteFont", 公开
+    .参数 font, 整数型
+
+.DLL命令 _DLL命令1F52C_IsBadWritePtr, 整数型, "kernel32", "IsBadWritePtr", 公开
+    .参数 _参数1, 整数型
+    .参数 _参数2, 整数型
+
+.DLL命令 Api_按键状态, 整数型, "user32.dll", "GetAsyncKeyState", 公开
+    .参数 键代码, 整数型, , vKey Long，欲测试的虚拟键的键码
+
+.DLL命令 Api_取当前激活窗口, 整数型, "user32", "GetForegroundWindow", 公开, 返回窗口句柄
+
+.DLL命令 Api_回调钩子, 整数型, "user32", "CallWindowProcA", 公开
+    .参数 子程序指针, 子程序指针
+    .参数 窗口句柄, 整数型
+    .参数 消息类型, 整数型
+    .参数 特定信息1, 整数型
+    .参数 特定信息2, 整数型
+
+.DLL命令 Api_关闭对象, 整数型, "kernel32", "CloseHandle", 公开
+    .参数 对象句柄, 整数型
+

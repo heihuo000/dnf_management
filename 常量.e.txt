@@ -1,0 +1,30 @@
+﻿.版本 2
+
+.常量 INTERNET_OPTION_SECURITY_FLAGS, "31", , 证书错误处理方式
+.常量 INTERNET_COOKIE_THIRD_PARTY, "16", 公开, 运行第三方COOKIE
+.常量 INTERNET_FLAG_NO_COOKIES, "524288", 公开
+.常量 INTERNET_FLAG_NO_CACHE_WRITE, "67108864", 公开, 0x04000000
+.常量 INTERNET_FLAG_NO_AUTO_REDIRECT, "2097152", 公开, HttpSendRequest、InternetOpenUrl 不自动处理重定向
+.常量 TH32CS_SNAPPROCESS, "2"
+
+
+
+
+
+
+.常量 CP_UTF8, "65001", 公开, Unicode (UTF-8)
+
+
+.常量 WINHTTP_OPTION_ENABLE_FEATURE, "79"
+.常量 WINHTTP_DISABLE_REDIRECTS, "2", , 禁用重定向
+.常量 WINHTTP_DISABLE_COOKIES, "1", , 禁用自动设置COOKIES
+.常量 WINHTTP_AUTH_TARGET_SERVER, "0", , 验证目标：网站服务器。
+.常量 WINHTTP_ACCESS_TYPE_NO_PROXY, "1", , 直接访问，不使用代理。
+.常量 WINHTTP_OPTION_SECURITY_FLAGS, "31", , 忽略证书错误 #define WINHTTP_OPTION_SECURITY_FLAGS                31
+.常量 WINHTTP_AUTH_TARGET_PROXY, "1", , 验证目标：代理服务器。
+.常量 WINHTTP_FLAG_SECURE, "8388608", , SSL/TLS安全超文本协议。
+.常量 WINHTTP_AUTH_SCHEME_BASIC, "1", , 基本认证方式(BASE64加密)。
+.常量 WINHTTP_DEFAULT_ACCEPT_TYPES, "0", , 默认文件类型
+.常量 WINHTTP_NO_REFERER, "0", , 没有来源页面
+.常量 VER_NT_WORKSTATION, "1"
+.常量 Str_Ex_DirectUI, "“Ex_DirectUI”"

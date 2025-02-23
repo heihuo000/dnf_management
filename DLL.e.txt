@@ -1,0 +1,71 @@
+﻿.版本 2
+
+.DLL命令 PeekMessage, 逻辑型, "user32.dll", "PeekMessageA", , 系统_处理事件1
+    .参数 lpMsg, MSG
+    .参数 hwnd, 整数型
+    .参数 wMsgFilterMin, 整数型
+    .参数 wMsgFilterMax, 整数型
+    .参数 wRemoveMsg, 整数型
+
+.DLL命令 sprintf, 整数型, "ntdll.dll", "@sprintf"
+    .参数 _Buffer, 整数型
+    .参数 _Format, 文本型
+    .参数 _Arg, 整数型
+
+.DLL命令 TranslateMessage, 逻辑型, "user32.dll", "TranslateMessage", , 系统_处理事件1
+    .参数 消息结构, MSG, , lpMsg
+
+.DLL命令 DispatchMessage, 整数型, "user32.dll", "DispatchMessageA", , 系统_处理事件1
+    .参数 消息结构, MSG, , lpMsg
+
+.DLL命令 lstrcmp, 整数型, "kernel32.dll", "lstrcmpA", , 比较两个字符串
+    .参数 lpString1, 文本型
+    .参数 lpString2, 文本型
+
+.DLL命令 CryptAcquireContextA, 整数型, "advapi32.dll", "CryptAcquireContextA"
+    .参数 phProv, 整数型, 传址
+    .参数 pszContainer, 文本型
+    .参数 pszProvider, 文本型
+    .参数 dwProvType, 整数型
+    .参数 dwFlags, 整数型
+
+.DLL命令 CryptCreateHash, 整数型, "advapi32.dll", "CryptCreateHash"
+    .参数 hProv, 整数型
+    .参数 Algid, 整数型
+    .参数 hKey, 整数型
+    .参数 dwFlags, 整数型
+    .参数 phHash, 整数型, 传址
+
+.DLL命令 CryptDestroyHash, 整数型, "advapi32.dll", "CryptDestroyHash"
+    .参数 hHash, 整数型
+
+.DLL命令 RtlAdjustPrivilege, 整数型, "ntdll.dll", , , 提升进程权限
+    .参数 se_, 整数型
+    .参数 true_, 逻辑型
+    .参数 hprocess, 整数型
+    .参数 ret, 整数型, 传址
+
+.DLL命令 _创建快照, 整数型, , "CreateToolhelp32Snapshot"
+    .参数 falg, 整数型
+    .参数 id, 整数型
+
+.DLL命令 _第一个, 整数型, , "Process32First"
+    .参数 h, 整数型
+    .参数 p, 进程信息_
+
+.DLL命令 _下一个, 整数型, , "Process32Next"
+    .参数 h, 整数型
+    .参数 p, 进程信息_
+
+.DLL命令 GetLocalTime, 整数型, "kernel32.dll", "GetLocalTime", 公开, ,
+    .参数 系统时间格式, 精易_时间, 传址
+
+.DLL命令 lstrlen, 整数型, "kernel32.dll", "lstrlenW", , 取字节长度　
+    .参数 lpString, 整数型
+
+.DLL命令 lstrlenW, 整数型, "kernel32.dll", "lstrlenW"
+    .参数 lpString, 整数型
+
+.DLL命令 strlen, 整数型, "msvcrt.dll", "@strlen"
+    .参数 lpsz, 整数型
+

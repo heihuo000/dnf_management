@@ -1,0 +1,271 @@
+﻿.版本 2
+
+.程序集 IUdpNode, , 公开, 无连接的udp通信
+.子程序 CreateListener, 整数型, 公开, 创建 UdpNodeListener 对象,只会创建一次
+    
+
+.子程序 DestroyListener, , 公开, 销毁 UdpNodeListener 对象
+    
+
+.子程序 Create, 整数型, 公开, 创建 HP_UdpNode 对象
+    
+
+.子程序 Destroy, , 公开, 销毁 UdpNode 对象
+    .参数 hNode, 整数型
+
+    
+
+.子程序 Start, 逻辑型, 公开, 名称：启动通信组件 描述：启动 UDP 节点通信组件，启动完成后可开始收发数据
+    .参数 pNode, 整数型
+    .参数 lpszBindAddress, 文本型, 可空, 绑定地址（默认：nullptr，绑定任意地址）
+    .参数 usPort, 短整数型, 可空, 本地端口（默认：0）
+
+    
+
+.子程序 StartWithCast, 逻辑型, 公开, 名称：启动通信组件 描述：启动 UDP 节点通信组件，启动完成后可开始收发数据
+    .参数 pNode, 整数型
+    .参数 lpszBindAddress, 文本型, 可空, 绑定地址（默认：nullptr，绑定任意地址）
+    .参数 usPort, 短整数型, 可空, 本地端口（默认：0）
+    .参数 enCastMode, 整数型, 可空, 传播模式（默认：CM_UNICAST）
+    .参数 lpszCastAddress, 文本型, 可空, 传播地址（默认：nullptr，当 enCaseMode 为 CM_MULTICAST 或 CM_BROADCAST 时有效）
+
+    
+
+.子程序 Stop, 逻辑型, 公开, 名称：关闭通信组件 描述：关闭 UDP 节点通信组件，关闭完成后释放所有资源
+    .参数 pNode, 整数型
+
+    
+
+.子程序 Wait, 逻辑型, 公开, 名称：等待 描述：等待通信组件停止运行
+    .参数 pNode, 整数型
+    .参数 dwMilliseconds, 整数型, , 超时时间（毫秒，默认：-1，永不超时）
+
+    
+
+.子程序 Send, 逻辑型, 公开, 名称：发送数据 描述：向指定地址发送数据
+    .参数 pNode, 整数型
+    .参数 lpszRemoteAddress, 文本型, , 远程地址
+    .参数 usRemotePort, 短整数型, , 远程端口
+    .参数 pBuffer, 整数型, , 发送缓冲区
+    .参数 iLength, 整数型, , 发送缓冲区长度
+
+    
+
+.子程序 SendBytes, 逻辑型, 公开, 名称：发送数据 描述：向指定地址发送数据
+    .参数 pNode, 整数型
+    .参数 lpszRemoteAddress, 文本型, , 远程地址
+    .参数 usRemotePort, 短整数型, , 远程端口
+    .参数 pBuffer, 字节集, , 发送缓冲区
+
+    
+
+.子程序 SendPart, 逻辑型, 公开, 名称：发送数据 描述：向指定地址发送数据
+    .参数 pNode, 整数型
+    .参数 lpszRemoteAddress, 文本型, , 远程地址
+    .参数 usRemotePort, 短整数型, , 远程端口
+    .参数 pBuffer, 整数型, , 发送缓冲区
+    .参数 iLength, 整数型, , 发送缓冲区长度
+    .参数 iOffset, 整数型, , 发送缓冲区指针偏移量
+
+    
+
+.子程序 SendPackets, 逻辑型, 公开, 名称：发送多组数据 描述：向指定地址发送多组数据，把所有数据包组合成一个数据包发送（数据包的总长度不能大于设置的 UDP 包最大长度）
+    .参数 pNode, 整数型
+    .参数 lpszRemoteAddress, 文本型, , 远程地址
+    .参数 usRemotePort, 短整数型, , 远程端口
+    .参数 pBuffer, WSABUF, 数组, 发送缓冲区数组
+    .参数 iCount, 整数型, , 发送缓冲区数目
+
+    
+
+.子程序 SendCast, 逻辑型, 公开, 名称：发送数据 描述：向传播地址发送数据
+    .参数 pNode, 整数型
+    .参数 pBuffer, 整数型, , 发送缓冲区
+    .参数 iLength, 整数型, , 发送缓冲区长度
+
+    
+
+.子程序 SendCastPart, 逻辑型, 公开, 名称：发送数据 描述：向传播地址发送数据
+    .参数 pNode, 整数型
+    .参数 pBuffer, 整数型, , 发送缓冲区
+    .参数 iLength, 整数型, , 发送缓冲区长度
+    .参数 iOffset, 整数型, , 发送缓冲区指针偏移量
+
+    
+
+.子程序 SendCastPackets, 逻辑型, 公开, 名称：发送多组数据 描述：向传播地址发送多组数据，把所有数据包组合成一个数据包发送（数据包的总长度不能大于设置的 UDP 包最大长度）
+    .参数 pNode, 整数型
+    .参数 pBuffer, WSABUF, 数组, 发送缓冲区数组
+    .参数 iCount, 整数型, , 发送缓冲区数目
+
+    
+
+.子程序 SetExtra, , 公开, 设置附加数据
+    .参数 pNode, 整数型
+    .参数 pExtra, 整数型
+
+    
+
+.子程序 GetExtra, 整数型, 公开, 获取附加数据
+    .参数 pNode, 整数型
+
+    
+
+.子程序 GetState, 整数型, 公开, 检查通信组件是否已启动
+    .参数 pNode, 整数型
+
+    
+
+.子程序 HasStarted, 逻辑型, 公开, 查看通信组件当前状态
+    .参数 pNode, 整数型
+
+    
+
+.子程序 GetLastError, 整数型, 公开, 获取最近一次失败操作的错误代码
+    .参数 pNode, 整数型
+
+    
+
+.子程序 GetLastErrorDesc, 文本型, 公开, 获取最近一次失败操作的错误描述
+    .参数 pNode, 整数型
+
+    
+
+.子程序 GetLocalAddress, 逻辑型, 公开, 获取本节点地址
+    .参数 pNode, 整数型
+    .参数 lpszAddress, 文本型, 参考
+    .参数 pusPort, 整数型, 参考
+
+    
+
+.子程序 GetCastAddress, 逻辑型, 公开, 获取本节点传播地址
+    .参数 pNode, 整数型
+    .参数 lpszAddress, 文本型, 参考
+    .参数 pusPort, 整数型, 参考
+
+    
+
+.子程序 GetCastMode, 整数型, 公开, 获取传播模式
+    .参数 pNode, 整数型
+
+    
+
+.子程序 GetPendingDataLength, 逻辑型, 公开, 获取未发出数据的长度
+    .参数 pNode, 整数型
+    .参数 piPending, 整数型, 参考
+
+    
+
+.子程序 SetMaxDatagramSize, , 公开, 设置数据报文最大长度（建议在局域网环境下不超过 1432 字节，在广域网环境下不超过 548 字节）
+    .参数 pNode, 整数型
+    .参数 dwMaxDatagramSize, 整数型
+
+    
+
+.子程序 GetMaxDatagramSize, 整数型, 公开, 获取数据报文最大长度
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetMultiCastTtl, , 公开, 设置组播报文的 TTL（0 - 255）
+    .参数 pNode, 整数型
+    .参数 iMCTtl, 整数型
+
+    
+
+.子程序 GetMultiCastTtl, 整数型, 公开, 获取组播报文的 TTL
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetMultiCastLoop, , 公开, 设置是否启用组播环路（TRUE or FALSE）
+    .参数 pNode, 整数型
+    .参数 bMCLoop, 逻辑型
+
+    
+
+.子程序 IsMultiCastLoop, 逻辑型, 公开, 检测是否启用组播环路
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetWorkerThreadCount, , 公开, 设置工作线程数量（通常设置为 2 * CPU + 2）
+    .参数 pNode, 整数型
+    .参数 dwWorkerThreadCount, 整数型
+
+    
+
+.子程序 GetWorkerThreadCount, 整数型, 公开, 获取工作线程数量
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetPostReceiveCount, , 公开, 设置 Receive 预投递数量（根据负载调整设置，Receive 预投递数量越大则丢包概率越小）
+    .参数 pNode, 整数型
+    .参数 dwPostReceiveCount, 整数型
+
+    
+
+.子程序 GetPostReceiveCount, 整数型, 公开, 获取 Receive 预投递数量
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetFreeBufferPoolSize, , 公开, 设置内存块缓存池大小
+    .参数 pNode, 整数型
+    .参数 dwFreeBufferPoolSize, 整数型
+
+    
+
+.子程序 GetFreeBufferPoolSize, 整数型, 公开, 获取内存块缓存池大小
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetFreeBufferPoolHold, , 公开, 设置内存块缓存池回收阀值
+    .参数 pNode, 整数型
+    .参数 dwFreeBufferPoolSize, 整数型
+
+    
+
+.子程序 GetFreeBufferPoolHold, 整数型, 公开, 获取内存块缓存池回收阀值
+    .参数 pNode, 整数型
+
+    
+
+.子程序 SetReuseAddressPolicy, , 公开, 设置地址重用选项
+    .参数 pNode, 整数型
+    .参数 enReusePolicy, 整数型, , #RAP_ 开头常量
+
+    
+
+.子程序 GetReuseAddressPolicy, 整数型, 公开, 获取地址重用选项 #RAP_ 开头常量
+    .参数 pNode, 整数型
+
+    
+
+.子程序 OnPrepareListen, 逻辑型, 公开, 【可选】绑定准备监听事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnPrepareListen(pSender 整数型,soListen 整数型)
+
+    
+
+.子程序 OnSend, 逻辑型, 公开, 【可选】绑定发送事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnSend(pSender 整数型,lpszRemoteAddress 文本型，usRemotePort 短整数型,pData 整数型,iLength 整数型)
+
+    
+
+.子程序 OnReceive, 逻辑型, 公开, 【必须】绑定数据接收事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnReceive(pSender 整数型,lpszRemoteAddress 文本型，usRemotePort 短整数型,pData 整数型,iLength 整数型)
+
+    
+
+.子程序 OnError, 逻辑型, 公开, 【必须】绑定断开事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnError(pSender 整数型,dwConnID 整数型,enOperation(#SO_ 开头常量) 整数型,iErrorCode 整数型,lpszRemoteAddress 文本型，usRemotePort 短整数型，pData 整数型(BYTE*)，iLength 整数型)
+
+    
+
+.子程序 OnShutdown, 逻辑型, 公开, 【可选】绑定关闭事件
+    .参数 fn, 子程序指针, , 返回 #HR_ 开头常量 OnShutdown(pSender 整数型)
+
+    
+

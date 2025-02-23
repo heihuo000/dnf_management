@@ -1,0 +1,114 @@
+﻿.版本 2
+
+.程序集 IConvert, , 公开, 数据转换
+.子程序 Load, 逻辑型, 公开, 载入数据
+    .参数 pData, 整数型
+    .参数 iLength, 整数型
+    .参数 bCopy, 逻辑型, 可空, 是否复制数据
+
+    
+
+.子程序 LoadString, 逻辑型, 公开, 载入字符串
+    .参数 string, 文本型, , 非变量数据,bCopy 请填 真,比如返回值,静态文本
+    .参数 bCopy, 逻辑型, 可空, 是否复制数据
+
+    
+
+.子程序 LoadBytes, 逻辑型, 公开, 载入字节集
+    .参数 bytes, 字节集, , 非变量数据,bCopy 请填 真,比如返回值,静态字符串
+    .参数 bCopy, 逻辑型, 可空, 是否复制数据
+
+    
+
+.子程序 Free, , 公开, 释放缓冲区
+    
+
+.子程序 GetData, 逻辑型, 公开, 获取数据指针
+    .参数 pData, 整数型, 参考, 请不要释放,可修改指针内容
+    .参数 iLength, 整数型, 参考, 返回数据长度
+    .参数 bInherit, 逻辑型, 可空, 继承数据,继承后this释放时,不会释放申请的内存,由调用者自行释放(SYS_Free)
+
+    
+
+.子程序 WriteBytes, 字节集, 公开, 写出数据
+    
+
+.子程序 WriteString, 文本型, 公开, 写出数据
+    
+
+.子程序 Base64Encode, 整数型, 公开, Base64编码
+    
+
+.子程序 Base64Decode, 整数型, 公开, Base64解码
+    
+
+.子程序 Compress, 整数型, 公开, 普通压缩
+    
+
+.子程序 Uncompress, 整数型, 公开, 普通解压
+    
+
+.子程序 CompressEx, 整数型, 公开, 高级压缩
+    .参数 iLevel, 整数型
+    .参数 iMethod, 整数型
+    .参数 iWindowBits, 整数型
+    .参数 iMemLevel, 整数型
+    .参数 iStrategy, 整数型
+
+    
+
+.子程序 UncompressEx, 整数型, 公开, 高级解压
+    .参数 iWindowBits, 整数型
+
+    
+
+.子程序 GZipCompress, 整数型, 公开, GZip压缩
+    
+
+.子程序 GZipUncompress, 整数型, 公开, GZip解压
+    
+
+.子程序 BrotliCompress, 整数型, 公开, Brotli压缩
+    
+
+.子程序 BrotliCompressEx, 整数型, 公开, Brotli压缩
+    .参数 iQuality, 整数型, , 11
+    .参数 iWindow, 整数型, , 22
+    .参数 iMode, 整数型, , 0
+
+    
+
+.子程序 BrotliUncompress, 整数型, 公开, Brotli解压
+    
+
+.子程序 UrlEncode, 整数型, 公开, Url编码
+    
+
+.子程序 UrlDecode, 整数型, 公开, Url解码
+    
+
+.子程序 GbkToUnicode, 整数型, 公开, Gbk转换到unicode
+    
+
+.子程序 UnicodeToGbk, 整数型, 公开, unicode转换到Gbk
+    
+
+.子程序 GbkToUtf8, 整数型, 公开, Gbk转换到Utf8
+    
+
+.子程序 Utf8ToGbk, 整数型, 公开, Utf8转换到Gbk
+    
+
+.子程序 Utf8ToUnicode, 整数型, 公开, Utf8转换到Unicode
+    
+
+.子程序 UnicodeToUtf8, 整数型, 公开, Unicode转换到tf8
+    
+
+.子程序 Customize, 整数型, 公开, 自定义函数
+    .参数 callback, 整数型, , int call(int pData,int uDataSize,int Password,int PasswordLen,int pCipher,int* pBufLen)
+    .参数 pKey, 整数型, 可空, 密钥指针,没有就填0
+    .参数 iKeylen, 整数型, 可空, 密钥长度
+
+    
+

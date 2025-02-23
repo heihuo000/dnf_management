@@ -1,0 +1,18 @@
+﻿{
+    "E盾云定制版小盾": {
+        "Comment": "SDK标记",
+        "IsPublic": false
+    },
+    "json2": {
+        "Comment": "JSON官方JavaScript脚本",
+        "IsPublic": false
+    },
+    "密钥实例": {
+        "Comment": "密钥结果使用实例",
+        "IsPublic": false
+    },
+    "全局密文实例通讯": {
+        "Comment": "全局通读密钥",
+        "IsPublic": false
+    }
+}

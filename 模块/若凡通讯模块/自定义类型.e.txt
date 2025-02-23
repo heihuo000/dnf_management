@@ -1,0 +1,24 @@
+﻿.版本 2
+
+.数据类型 TNVPair, 公开, 描述：字符串名值对结构体
+    .成员 name, 文本型
+    .成员 value, 文本型
+
+.数据类型 WSABUF, 公开
+    .成员 len, 整数型
+    .成员 buf, 字节集
+
+.数据类型 TIPAddr, 公开, IP 地址条目结构体
+    .成员 type, 整数型, , , #IPT_ 开头常量
+    .成员 address, 文本型
+
+.数据类型 TSocketTask, 公开, Socket 任务结构体,封装 Socket 任务相关数据结构
+    .成员 fnTaskProc, 整数型, , , 任务入口函数
+    .成员 pSender, 整数型, , , 发起对象
+    .成员 dwConnID, 整数型, , , 连接 ID
+    .成员 pBuffer, 整数型, , , 数据缓冲区
+    .成员 iBuffLen, 整数型, , , 数据缓冲区长度
+    .成员 bufType, 逻辑型, , , 缓冲区类型
+    .成员 wParam, 整数型, , , 自定义参数
+    .成员 lParam, 整数型, , , 自定义参数
+
